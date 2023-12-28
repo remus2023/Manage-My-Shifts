@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,400;8..144,500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Serif", serif;
+}
+
+$bg-white: #ffffff;
+$bg-light-gray: #efefef;
+$color-black: #161616;
+$bg-btn: #1577ea;
+$bg-green: #038829;
+
+.btn {
+  border: 2px solid #0c6cda;
+  width: 300px;
+  background: #0c6cda;
+  height: 42px;
+  border-radius: 5px;
+  color: $bg-white;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    background: #4e97ec;
+  }
+  &--register {
+    border: 2px solid #ffb032;
+    background: #ffb032;
+    color: $color-black;
+    &:hover {
+      background: #f1c071;
+    }
+  }
+}

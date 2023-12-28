@@ -1,0 +1,63 @@
+@import "./global.scss";
+@import "./mixin.scss";
+body {
+  max-width: 1440px;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  background: $bg-light-gray;
+}
+.section {
+  @include flexBox(1000px, 370px, row, center, center, unset);
+  border-radius: 15px;
+  box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+  background: $bg-green;
+}
+.login {
+  @include flexBox(500px, 100%, column, center, center, 25px);
+  padding: 30px 70px;
+  background: $bg-white;
+  border-radius: 15px;
+  &__title {
+    @include typography($color-black, 32px, normal, 500, normal, normal, none, center);
+  }
+  &__form {
+    @include flexBox(300px, auto, column, center, center, 25px);
+  }
+  &__box {
+    @include flexBox(300px, auto, column, center, stretch, 10px);
+  }
+  &__label {
+    @include typography($color-black, 16px, normal, 400, normal, normal, none, left);
+  }
+  &__input {
+    @include typography($color-black, 16px, normal, 400, normal, normal, none, left);
+    opacity: 0.55;
+    height: 42px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #e8e8e8;
+    outline: none;
+    &:focus,
+    &:hover {
+      background: #f7fffc;
+      border: 1px solid $bg-green;
+      color: $bg-green;
+    }
+  }
+  &__error {
+    display: none;
+  }
+}
+.register {
+  @include flexBox(500px, auto, column, center, center, 65px);
+  padding: 30px 100px;
+
+  &__title {
+    @include typography($bg-white, 32px, normal, 500, normal, normal, none, center);
+  }
+  &__paragraph {
+    @include typography($bg-white, 18px, normal, 500, normal, normal, none, center);
+  }
+}

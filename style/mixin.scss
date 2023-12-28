@@ -1,0 +1,37 @@
+@mixin flexBox(
+  $flex-width,
+  $flex-height,
+  $flex-direction,
+  $flex-justify-content: flex-start,
+  $flex-align-items: stretch,
+  $flex-gap: normal
+) {
+  max-width: $flex-width;
+  width: 100%;
+  height: $flex-height;
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $flex-justify-content;
+  align-items: $flex-align-items;
+  gap: $flex-gap;
+}
+
+@mixin typography(
+  $font-color,
+  $font-size,
+  $font-style,
+  $font-weight,
+  $font-lineHeight,
+  $font-spacing,
+  $font-transform,
+  $text-align
+) {
+  color: $font-color;
+  font-size: $font-size;
+  font-style: $font-style;
+  font-weight: $font-weight;
+  line-height: $font-lineHeight;
+  letter-spacing: $font-spacing;
+  text-transform: $font-transform;
+  text-align: $text-align;
+}

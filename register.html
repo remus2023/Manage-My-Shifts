@@ -5,44 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register page</title>
     <link rel="stylesheet" href="./style/login.css" />
+    <script type="module" src="./js/register.js" defer></script>
   </head>
   <body>
     <section class="register-box">
       <div class="login">
         <h1 class="login__title">Create Account</h1>
-        <form class="login__form">
-          <div class="login__box">
-            <label class="login__lable" for="userName">User Name</label>
+        <form class="login__form" id="loginForm">
+          <div class="login__box" id="loginBox" data-length="6">
+            <label class="login__label" for="userName" id="userNameLabel">User Name</label>
             <input class="login__input" type="text" id="userName" placeholder="User Name" />
-            <p class="login__error"></p>
+            <p class="login__error hide" id="userNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
           </div>
-          <div class="login__box">
-            <label class="login__lable" for="firstName">First Name</label>
+          <div class="login__box" id="loginBox" data-length="2">
+            <label class="login__label" for="firstName" id="firstNameLabel">First Name</label>
             <input class="login__input" type="text" id="firstName" placeholder="First Name" />
-            <p class="login__error"></p>
+            <p class="login__error hide" id="firstNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
           </div>
-          <div class="login__box">
-            <label class="login__lable" for="lastName">Last Name</label>
+          <div class="login__box" id="loginBox" data-length="2">
+            <label class="login__label" for="lastName" id="lastNameLabel">Last Name</label>
             <input class="login__input" type="text" id="lastName" placeholder="Last Name" />
-            <p class="login__error"></p>
+            <p class="login__error hide" id="lastNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
           </div>
-          <div class="login__box">
-            <label class="login__lable" for="age">Age</label>
+          <div class="login__box" id="loginBox">
+            <label class="login__label" for="age" id="ageLabel">Age</label>
             <input class="login__input" type="number" id="age" placeholder="Age" />
-            <p class="login__error"></p>
+            <p class="login__error hide" id="ageError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" id="ageImg" />
           </div>
-          <div class="login__box">
-            <label class="login__label" for="password">Password</label>
-            <input class="login__input" type="password" id="password" placeholder="Password" />
-            <p class="login__error"></p>
+          <div class="login__box" id="loginBox" data-length="6">
+            <label class="login__label" for="password" id="passwordLabel">Password</label>
+            <input class="login__input" type="password" id="password" placeholder="Password" maxlength="19" />
+            <p class="login__error hide" id="passwordError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
           </div>
-          <div class="login__box">
-            <label class="login__label" for="email">Email</label>
-            <input class="login__input" type="email" id="email" placeholder="Email" />
-            <p class="login__error"></p>
+          <div class="login__box" id="loginBox">
+            <label class="login__label" for="email" id="emailLabel">Email</label>
+            <input class="login__input" type="email" id="email" placeholder="Email" required />
+            <p class="login__error hide" id="emailError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" id="emailImg" />
           </div>
-
-          <button class="btn">Create account</button>
+          <button class="btn" id="createAccount">Create account</button>
         </form>
       </div>
     </section>

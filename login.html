@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <link rel="stylesheet" href="./style/login.css" />
+    <script type="module" src="js/login.js" defer></script>
   </head>
   <body>
     <section class="section">
       <div class="login">
         <h1 class="login__title">Login to Your Account</h1>
         <form class="login__form">
-          <div class="login__box">
-            <label class="login__lable">User Name</label>
-            <input class="login__input" type="text" placeholder="User Name" />
+          <div class="login__box" id="loginBox" data-length="6">
+            <label class="login__label" for="userName">User Name</label>
+            <input class="login__input" type="text" id="userName" placeholder="User Name" />
+            <p class="login__error hide" id="userNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" id="userNameImg" />
           </div>
-          <div class="login__box">
-            <label class="login__label" for="">Password</label>
-            <input class="login__input" type="password" name="" id="" placeholder="Password" />
+          <div class="login__box" id="loginBox" data-length="6">
+            <label class="login__label" for="password">Password</label>
+            <input class="login__input" type="password" id="password" placeholder="Password" maxlength="19" />
+            <p class="login__error hide" id="passwordError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" id="passwordImg" />
           </div>
-          <button class="btn">Sign In</button>
+          <button class="btn" id="signIn">Sign In</button>
         </form>
       </div>
       <div class="register">

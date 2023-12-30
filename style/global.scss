@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,400;8..144,500&display=swap");
+@import "./mixin.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -6,30 +8,49 @@
   font-family: "Roboto Serif", serif;
 }
 
+a {
+  text-decoration: none;
+  width: 100%;
+}
+
 $bg-white: #ffffff;
 $bg-light-gray: #efefef;
 $color-black: #161616;
 $bg-btn: #1577ea;
 $bg-green: #038829;
+$error-color: #ff4040;
 
 .btn {
   border: 2px solid #0c6cda;
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   background: #0c6cda;
   height: 42px;
   border-radius: 5px;
   color: $bg-white;
   font-size: 20px;
   cursor: pointer;
+
   &:hover {
     background: #4e97ec;
   }
+
   &--register {
     border: 2px solid #ffb032;
     background: #ffb032;
-    color: $color-black;
+    color: $bg-white;
+
     &:hover {
       background: #f1c071;
+
     }
   }
+}
+
+.register-box {
+  @include flexBox(500px, auto, column, center, center, 65px);
+}
+
+.hide {
+  display: none;
 }

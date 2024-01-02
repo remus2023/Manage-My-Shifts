@@ -1,0 +1,73 @@
+@import "./global.scss";
+
+body {
+    align-items: start
+}
+
+header {
+    @include flexBox(1000px, auto, column, space-between, center, 20px);
+}
+
+.navbar {
+    @include flexBox(1000px, auto, row, space-between, center, unset);
+    background: $bg-white;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+
+    &__img {
+        width: 770px;
+    }
+
+    &__links {
+        @include flexBox(max-content, auto, row, center, center, 30px);
+    }
+
+    &__item {
+        @include flexBox(max-content, 38px, row, center, center, unset);
+        padding: 0 15px;
+        background: $bg-green;
+        border-radius: 5px;
+    }
+
+    &__link {
+        @include typography($bg-white, 14px, normal, 500, normal, normal, none, center);
+
+    }
+
+    &__user {
+        @include flexBox(max-content, auto, row, center, center, 35px);
+    }
+
+    &__span {
+        min-width: min-content;
+        @include typography($bg-btn, 24px, normal, 500, normal, normal, none, center);
+    }
+}
+
+.shifts {
+    @include flexBox(1000px, auto, column, space-between, center, 20px);
+
+    &__table {
+        width: 100%;
+        border-spacing: 0;
+
+        th,
+        td {
+            text-align: center;
+            padding: 10px;
+            color: brown;
+            border-bottom: 1px solid red;
+
+        }
+
+        tr {
+            border-bottom: 1px solid red;
+            border: 20px;
+        }
+    }
+}
+
+footer {
+    @include flexBox(1000px, auto, column, space-between, center, 20px);
+}

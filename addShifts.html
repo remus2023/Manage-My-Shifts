@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/addShifts.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Add Shifts</title>
+    <script type="module" src="./js/addShits.js" defer></script>
+  </head>
+  <body>
+    <header></header>
+    <section class="shift">
+      <div class="shift__content">
+        <h1 class="shift__title">Add your shift in system</h1>
+        <form class="shift__form">
+          <div class="shift__box" data-empty="no">
+            <div class="shift__input-box">
+              <label for="date" class="shift__label">Date</label>
+              <input type="date" class="shift__input" id="date" required />
+              <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorDate" />
+            </div>
+            <p class="shift__error hide" id="errorDate"></p>
+          </div>
+          <div class="shift__box" data-empty="no">
+            <div class="shift__input-box">
+              <label for="timeStart" class="shift__label">Start time</label>
+              <input type="time" class="shift__input" id="timeStart" disabled />
+              <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorTimeStart" />
+            </div>
+            <p class="shift__error hide" id="errorTimeStart"></p>
+          </div>
+          <div class="shift__box" data-empty="no">
+            <div class="shift__input-box">
+              <label for="timeEnd" class="shift__label">End time</label>
+              <input type="time" class="shift__input" id="timeEnd" disabled />
+              <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorTimeEnd" />
+            </div>
+            <p class="shift__error hide" id="errorTimeEnd"></p>
+          </div>
+          <div class="shift__box" data-empty="no">
+            <div class="shift__input-box">
+              <label for="hourlyWage" class="shift__label">Hourly Wage</label>
+              <input type="text" class="shift__input" id="hourlyWage" required />
+              <img src="./images/nok.png" alt="Error" class="shift__img hide" />
+            </div>
+            <p class="shift__error hide"></p>
+          </div>
+          <div class="shift__box" data-empty="yes">
+            <div class="shift__input-box">
+              <label for="workplace" class="shift__label">Workplace</label>
+              <select name="" id="workplace" class="shift__input shift__input--workplace" required>
+                <option value="Paint Shop">Paint Shop</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Power Train Operation">Power Train Operation</option>
+                <option value="Body Shop">Body Shop</option>
+                <option value="Marketplace">Marketplace</option>
+                <option value="Vehicle Operation">Vehicle Operation</option>
+                <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
+              </select>
+            </div>
+          </div>
+          <div class="shift__box" data-empty="no">
+            <div class="shift__input-box">
+              <label for="shift" class="shift__label">Shift</label>
+              <input type="text" class="shift__input" id="shift" />
+              <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorShift" />
+            </div>
+            <p class="shift__error hide" id="errorShift"></p>
+          </div>
+          <div class="shift__box" data-empty="yes">
+            <div class="shift__input-box">
+              <label for="commnets" class="shift__label">Comments</label>
+              <textarea class="shift__input shift__input--comment" cols="30" rows="7" id="comments"></textarea>
+            </div>
+          </div>
+          <button class="btn" id="addShift">Add shift</button>
+        </form>
+      </div>
+      <div class="shift__banner"></div>
+    </section>
+    <footer></footer>
+  </body>
+</html>

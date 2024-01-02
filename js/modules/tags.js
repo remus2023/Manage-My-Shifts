@@ -31,3 +31,23 @@ export const createAccount = document.querySelector("#createAccount");
 export const signIn = document.querySelector("#signIn"); //login.html
 
 export const dataLength = document.querySelectorAll("[data-length]");
+
+//addShifts.html
+export const shiftBox = document.querySelectorAll("[data-empty]");
+export const addShift = document.querySelector("#addShift");
+export const date = document.querySelector("#date");
+export const timeStart = document.querySelector("#timeStart");
+export const timeEnd = document.querySelector("#timeEnd");
+export const hourlyWage = document.querySelector("#hourlyWage");
+export const workplace = document.querySelector("#workplace");
+export const shift = document.querySelector("#shift");
+export const comments = document.querySelector("#comments");
+
+export const imgErrorDate = document.querySelector("#imgErrorDate");
+export const errorDate = document.querySelector("#errorDate");
+export const imgErrorTimeStart = document.querySelector("#imgErrorTimeStart");
+export const errorTimeStart = document.querySelector("#errorTimeStart");
+export const imgErrorTimeEnd = document.querySelector("#imgErrorTimeEnd");
+export const errorTimeEnd = document.querySelector("#errorTimeEnd");
+export const imgErrorShift = document.querySelector("#imgErrorShift");
+export const errorShift = document.querySelector("#errorShift");

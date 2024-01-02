@@ -25,15 +25,16 @@ import {
 import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
 
 let usersDb = JSON.parse(localStorage.getItem("usersDb")) || [];
-let isCheck = true;
+let isValid = true;
 
 createAccount.addEventListener("click", (e) => {
+  isValid = true;
   e.preventDefault();
-  //emptyCheck();
+  emptyCheck();
   checkLength();
-  checkEmail(emailLabel, email, emailError, emailImg);
   checkAge(ageLabel, age, ageError, ageImg);
-  if (isCheck) register();
+  checkEmail(emailLabel, email, emailError, emailImg);
+  if (isValid) register();
 });
 
 // function emptyCheck() {
@@ -69,16 +70,15 @@ function checkLength() {
     });
 
     if (!loginInput.value) {
-      addRemoveClassesInvalid(loginInput, loginError, loginImg);
-      isCheck = false;
+      addRemoveClassesInvalid(loginInput, loginError, loginImg, "login__input--valid", "login__input--error");
       loginError.textContent = `${loginLabel.textContent} can't be empty`;
+      isValid = false;
     } else if (loginInput.value.length < element.dataset.length && loginInput.value.length > 0) {
-      addRemoveClassesInvalid(loginInput, loginError, loginImg);
-      isCheck = false;
+      addRemoveClassesInvalid(loginInput, loginError, loginImg, "login__input--valid", "login__input--error");
       loginError.textContent = `${loginLabel.textContent} must have at least ${element.dataset.length} characters long`;
+      isValid = false;
     } else {
-      addRemoveClassesValid(loginInput, loginError, loginImg);
-      isCheck = true;
+      addRemoveClassesValid(loginInput, loginError, loginImg, "login__input--valid", "login__input--error");
     }
   });
 }
@@ -87,27 +87,26 @@ function checkEmail(label, input, error, img) {
   const isValidEmail = emailPattern.test(input.value);
   console.log(isValidEmail);
   if (!isValidEmail) {
-    addRemoveClassesInvalid(input, error, img);
-    isCheck = false;
+    addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
     error.textContent = `${label.textContent} is not a valid email format`;
+    isValid = false;
   } else {
-    addRemoveClassesValid(input, error, img);
-    isCheck = true;
+    addRemoveClassesValid(input, error, img, "login__input--valid", "login__input--error");
   }
+  console.log("verif email: ", isCheck);
 }
 function checkAge(label, input, error, img) {
   if (input.value >= 18 && input.value <= 65) {
-    addRemoveClassesValid(input, error, img);
-    isCheck = true;
+    addRemoveClassesValid(input, error, img, "login__input--valid", "login__input--error");
   } else {
-    addRemoveClassesInvalid(input, error, img);
-    isCheck = false;
+    addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
+    isValid = false;
     error.textContent = `${label.textContent} must be between 18 and 65`;
   }
 }
-function checkUserName(label, input, error, img) {}
+// function checkUserName(label, input, error, img) {}
 
-function checkName(label, input, error, img) {}
+// function checkName(label, input, error, img) {}
 
 function register() {
   let newUser = {
@@ -120,5 +119,5 @@ function register() {
   };
   usersDb.push(newUser);
   localStorage.setItem("usersDb", JSON.stringify(usersDb));
-  window.location.href = "login.html";
+  //window.location.href = "login.html";
 }

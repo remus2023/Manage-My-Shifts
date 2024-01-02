@@ -1,13 +1,13 @@
-export function addRemoveClassesInvalid(input, error, img) {
+export function addRemoveClassesInvalid(input, error, img, inputValid, inputError) {
   error.classList.remove("hide");
-  input.classList.remove("login__input--valid");
-  input.classList.add("login__input--error");
+  input.classList.remove(inputValid);
+  input.classList.add(inputError);
   img.src = "./images/nok.png";
   img.classList.remove("hide");
 }
-export function addRemoveClassesValid(input, error, img) {
-  input.classList.add("login__input--valid");
-  input.classList.remove("login__input--error");
+export function addRemoveClassesValid(input, error, img, inputValid, inputError) {
+  input.classList.add(inputValid);
+  input.classList.remove(inputError);
   error.classList.add("hide");
   img.classList.remove("hide");
   img.src = "./images/ok.png";

@@ -23,17 +23,17 @@ function checkUser() {
     addRemoveClassesValid(userName, userNameError, userNameImg);
     //then check if user password in correct
     if (userCheck.password !== password.value) {
-      addRemoveClassesInvalid(password, passwordError, passwordImg);
+      addRemoveClassesInvalid(password, passwordError, passwordImg, "login__input--valid", "login__input--error");
       passwordError.textContent = `Incorrect password`;
     } else {
-      addRemoveClassesValid(password, passwordError, passwordImg);
+      addRemoveClassesValid(password, passwordError, passwordImg, "login__input--valid", "login__input--error");
       localStorage.setItem("loggedUser", JSON.stringify(userCheck));
       window.location.href = "index.html";
     }
   } else {
-    addRemoveClassesInvalid(userName, userNameError, userNameImg);
+    addRemoveClassesInvalid(userName, userNameError, userNameImg, "login__input--valid", "login__input--error");
     userNameError.textContent = `User ${userName.value} doesn't exist in database`;
-    addRemoveClassesInvalid(password, passwordError, passwordImg);
+    addRemoveClassesInvalid(password, passwordError, passwordImg, "login__input--valid", "login__input--error");
     passwordError.textContent = `Incorrect password`;
   }
 }

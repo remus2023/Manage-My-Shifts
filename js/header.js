@@ -7,4 +7,4 @@ if (logOutBtn) {
   logOutBtn.addEventListener("click", logOut);
 }
 
-userSpan.textContent = `Buna, ${getUser().username}!!`;
+userSpan.textContent = `Buna, ${getUser().username}!!!`;

@@ -57,6 +57,18 @@ body {
 .btn--logout:hover {
   background: #f1c071;
 }
+.btn--edit-shift {
+  border: 2px solid #ffb032;
+  background: #ffb032;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  height: 38px;
+  padding: 0 4px;
+}
+.btn--edit-shift:hover {
+  background: #f1c071;
+}
 
 .register-box {
   max-width: 500px;

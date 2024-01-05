@@ -22,7 +22,10 @@ import {
   createAccount,
   dataLength,
 } from "./modules/tags.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
+import { addRemoveClassesInvalid, addRemoveClassesValid, preventBack } from "./modules/functions.js";
+window.onload = () => {
+  preventBack();
+};
 
 let usersDb = JSON.parse(localStorage.getItem("usersDb")) || [];
 let isValid = true;
@@ -30,11 +33,16 @@ let isValid = true;
 createAccount.addEventListener("click", (e) => {
   isValid = true;
   e.preventDefault();
-  emptyCheck();
+  // emptyCheck();
   checkLength();
   checkAge(ageLabel, age, ageError, ageImg);
   checkEmail(emailLabel, email, emailError, emailImg);
-  if (isValid) register();
+  if (isValid) {
+    register();
+    // header();
+    // footer();
+    // getUser();
+  }
 });
 
 // function emptyCheck() {
@@ -93,7 +101,7 @@ function checkEmail(label, input, error, img) {
   } else {
     addRemoveClassesValid(input, error, img, "login__input--valid", "login__input--error");
   }
-  console.log("verif email: ", isCheck);
+  console.log("verif email: ", isValid);
 }
 function checkAge(label, input, error, img) {
   if (input.value >= 18 && input.value <= 65) {
@@ -119,5 +127,5 @@ function register() {
   };
   usersDb.push(newUser);
   localStorage.setItem("usersDb", JSON.stringify(usersDb));
-  //window.location.href = "login.html";
+  window.location.href = "login.html";
 }

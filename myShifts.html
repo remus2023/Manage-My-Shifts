@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>My Shifts</title>
+    <script type="module" src="./js/myShifts.js" defer></script>
+    <script type="module" src="./js/header.js" defer></script>
+  </head>
+  <body>
+    <header></header>
+    <section class="shifts">
+      <h1 class="shifts__title">Display my shifts</h1>
+      <table class="shifts__table" id="table">
+        <thead>
+          <tr class="shifts__tr">
+            <th>Date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Hourly wage</th>
+            <th>Workplace</th>
+            <th>Total profit per shift</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="tbody">
+          <tr class="shifts__tr" id="tr">
+            <td>19-11-2023</td>
+            <td>19:23</td>
+            <td>23:59</td>
+            <td>30$</td>
+            <td>shift3</td>
+            <td>340$</td>
+            <td>Edit shift</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="modal hide" id="modal">
+      <div class="modal__container">
+        <!-- html from addShift.html -->
+        <div class="shift__content">
+          <h1 class="shift__title">Change data on your shift</h1>
+          <form class="shift__form">
+            <div class="shift__box" data-empty="no">
+              <div class="shift__input-box">
+                <label for="date" class="shift__label">Date</label>
+                <input type="date" class="shift__input" id="date" required />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorDate" />
+              </div>
+              <p class="shift__error hide" id="errorDate"></p>
+            </div>
+            <div class="shift__box" data-empty="no">
+              <div class="shift__input-box">
+                <label for="timeStart" class="shift__label">Start time</label>
+                <input type="time" class="shift__input" id="timeStart" />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorTimeStart" />
+              </div>
+              <p class="shift__error hide" id="errorTimeStart"></p>
+            </div>
+            <div class="shift__box" data-empty="no">
+              <div class="shift__input-box">
+                <label for="timeEnd" class="shift__label">End time</label>
+                <input type="time" class="shift__input" id="timeEnd" />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorTimeEnd" />
+              </div>
+              <p class="shift__error hide" id="errorTimeEnd"></p>
+            </div>
+            <div class="shift__box" data-empty="no">
+              <div class="shift__input-box">
+                <label for="hourlyWage" class="shift__label">Hourly Wage</label>
+                <input type="text" class="shift__input" id="hourlyWage" required />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" />
+              </div>
+              <p class="shift__error hide"></p>
+            </div>
+            <div class="shift__box" data-empty="yes">
+              <div class="shift__input-box">
+                <label for="workplace" class="shift__label">Workplace</label>
+                <select name="" id="workplace" class="shift__input shift__input--workplace" required>
+                  <option value="Paint Shop">Paint Shop</option>
+                  <option value="Human Resources">Human Resources</option>
+                  <option value="Power Train Operation">Power Train Operation</option>
+                  <option value="Body Shop">Body Shop</option>
+                  <option value="Marketplace">Marketplace</option>
+                  <option value="Vehicle Operation">Vehicle Operation</option>
+                  <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
+                </select>
+              </div>
+            </div>
+            <div class="shift__box" data-empty="no">
+              <div class="shift__input-box">
+                <label for="shift" class="shift__label">Shift</label>
+                <input type="text" class="shift__input" id="shift" />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorShift" />
+              </div>
+              <p class="shift__error hide" id="errorShift"></p>
+            </div>
+            <div class="shift__box" data-empty="yes">
+              <div class="shift__input-box">
+                <label for="commnets" class="shift__label">Comments</label>
+                <textarea class="shift__input shift__input--comment" cols="30" rows="7" id="comments"></textarea>
+              </div>
+            </div>
+            <button class="btn" id="addShift">Add shift</button>
+          </form>
+        </div>
+        <!-- end html from addShift.html -->
+      </div>
+    </section>
+
+    <footer></footer>
+  </body>
+</html>

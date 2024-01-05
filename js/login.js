@@ -8,7 +8,11 @@ import {
   signIn,
   dataLength,
 } from "./modules/tags.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
+import { addRemoveClassesInvalid, addRemoveClassesValid, preventBack } from "./modules/functions.js";
+
+window.onload = () => {
+  preventBack();
+};
 let usersDb = JSON.parse(localStorage.getItem("usersDb")) || [];
 
 signIn.addEventListener("click", (e) => {

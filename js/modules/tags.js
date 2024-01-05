@@ -51,3 +51,15 @@ export const imgErrorTimeEnd = document.querySelector("#imgErrorTimeEnd");
 export const errorTimeEnd = document.querySelector("#errorTimeEnd");
 export const imgErrorShift = document.querySelector("#imgErrorShift");
 export const errorShift = document.querySelector("#errorShift");
+
+//logout
+export const logOutBtn = document.querySelector("#logOutBtn");
+export const userSpan = document.querySelector("#userSpan");
+
+//myShifts.html
+export const totalWage = document.querySelector("#totalWage");
+export const editShift = document.querySelector("#editShift");
+export const table = document.querySelector("#table");
+export const tr = document.querySelector("#tr");
+export const tbody = document.querySelector("#tbody");
+export const modal = document.querySelector("#modal");

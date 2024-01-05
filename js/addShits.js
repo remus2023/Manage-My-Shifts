@@ -1,4 +1,4 @@
-import {} from "./modules/fetch.js";
+import { getUser, getDb } from "./modules/fetch.js";
 import {
   addShift,
   shiftBox,
@@ -19,11 +19,7 @@ import {
   comments,
 } from "./modules/tags.js";
 import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
-const ora = document.querySelector("#timeStart");
-const ora2 = document.querySelector("#timeEnd");
-const data = document.querySelector("#date");
-const submit = document.querySelector("#submit");
-let shiftDb = JSON.parse(localStorage.getItem("shiftDb")) || [];
+let shiftDb = getDb("shiftDb");
 let isValid = true;
 
 addShift.addEventListener("click", function (e) {
@@ -43,8 +39,15 @@ date.addEventListener("input", () => {
     timeEnd.disabled = true;
     timeStart.value = "";
     timeEnd.value = "";
+    timeStart.classList.remove("shift__input--error");
+    imgErrorTimeStart.classList.add("hide");
+    errorTimeStart.classList.add("hide");
+    timeEnd.classList.remove("shift__input--error");
+    imgErrorTimeEnd.classList.add("hide");
+    errorTimeEnd.classList.add("hide");
   }
 });
+
 function checkEmpty() {
   shiftBox.forEach((element) => {
     const shiftLabel = element.querySelector(".shift__label");
@@ -55,8 +58,8 @@ function checkEmpty() {
       // de ce nu merge daca declar aici cu const???
       shiftImg = element.querySelector(".shift__img");
       shiftError = element.querySelector(".shift__error");
-      //   console.log(shiftImg, shiftError, typeof element.dataset.empty);
     }
+    //editez inputurile ca sa pot scoate mesajele de eroare
     shiftInput.addEventListener("input", function (e) {
       shiftInput.classList.remove("shift__input--error");
       if (element.dataset.empty === "no") {
@@ -98,14 +101,15 @@ function checkTime() {
   }
 }
 function checkShift() {
-  const shiftToCheck = JSON.parse(localStorage.getItem("shiftDb"));
-  const findShift = shiftToCheck.find((element) => shift.value === element.shift);
-  if (!findShift) {
-    addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-  } else {
-    addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-    errorShift.textContent = "This shift is already in database. Choose another name!";
-    isValid = false;
+  if (shift.value) {
+    const findShift = shiftDb.find((element) => shift.value === element.shift);
+    if (!findShift) {
+      addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+    } else {
+      addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+      errorShift.textContent = "This shift is already in database. Choose another name!";
+      isValid = false;
+    }
   }
 }
 function registerShift() {
@@ -117,19 +121,10 @@ function registerShift() {
     workplace: workplace.value,
     shift: shift.value,
     comment: comments.value,
+    email: getUser().email,
   };
   shiftDb.push(newShift);
   localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
   alert("Your shift was successfully add into database");
   window.location.href = "addShifts.html";
 }
-// submit.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   console.log(ora.value < ora2.value);
-//   let oraToDate = data.value + " " + ora.value;
-//   let oraFormat = new Date(oraToDate);
-//   let dataMili = new Date(data.value);
-//   let oraDif = ora2.value - ora.value;
-//   console.log(ora.value, " >>> ", oraFormat, "   ", data.value, " >>> ", dataMili);
-//   console.log(ora2.value, ora.value, oraDif);
-// });

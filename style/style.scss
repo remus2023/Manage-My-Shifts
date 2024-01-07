@@ -93,7 +93,17 @@ header {
         border: 1px solid #888;
         width: max-content;
         border-radius: 5px;
+        position: relative;
 
+    }
+
+    &__img {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        right: -20px;
+        top: -20px;
+        cursor: pointer;
     }
 }
 

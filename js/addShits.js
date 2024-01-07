@@ -18,16 +18,16 @@ import {
   errorShift,
   comments,
 } from "./modules/tags.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
+import { addRemoveClassesInvalid, addRemoveClassesValid, checkShift } from "./modules/functions.js";
 let shiftDb = getDb("shiftDb");
 let isValid = true;
-
+console.log(addShift);
 addShift.addEventListener("click", function (e) {
   isValid = true;
   e.preventDefault();
   checkEmpty();
   checkTime();
-  checkShift();
+  checkShift(shiftDb);
   if (isValid) registerShift();
 });
 
@@ -100,18 +100,7 @@ function checkTime() {
     }
   }
 }
-function checkShift() {
-  if (shift.value) {
-    const findShift = shiftDb.find((element) => shift.value === element.shift);
-    if (!findShift) {
-      addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-    } else {
-      addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-      errorShift.textContent = "This shift is already in database. Choose another name!";
-      isValid = false;
-    }
-  }
-}
+
 function registerShift() {
   const newShift = {
     dateCreatedShift: date.value,

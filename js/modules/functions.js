@@ -1,5 +1,7 @@
-//import { getDb } from "./fetch.js";
-import { date, timeStart, timeEnd, hourlyWage, workplace, shift, comments, addShift, modal } from "./tags.js";
+import { getDb } from "./fetch.js";
+import { date, timeStart, timeEnd, hourlyWage, workplace, shift, comments, addShift, modal, closeModal } from "./tags.js";
+//import { checkShift } from "../addShits.js";
+// de ce daca decomentez sus imi da eroare in index.html???
 
 export function addRemoveClassesInvalid(input, error, img, inputValid, inputError) {
   error.classList.remove("hide");
@@ -15,41 +17,62 @@ export function addRemoveClassesValid(input, error, img, inputValid, inputError)
   img.classList.remove("hide");
   img.src = "./images/ok.png";
 }
-export function checkLogIn() {
-  if (!localStorage.getItem("loggedUser")) window.location.href = "login.html";
-}
-export function logOut() {
-  localStorage.removeItem("loggedUser");
-  window.location.href = "login.html";
-}
-export function preventBack() {
-  if (localStorage.getItem("loggedUser")) window.location.href = "index.html";
-}
 
 export function showShifts(sortedShifts, parentTag) {
   sortedShifts.forEach((element) => renderShifts(element, parentTag));
+}
+
+//functie din addShifts.js mutata aici din cauza erori
+let isValid = true;
+export function checkShift(shiftDataBase) {
+  if (shift.value) {
+    const findShift = shiftDataBase.find((element) => shift.value === element.shift);
+    if (!findShift) {
+      addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+    } else {
+      addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+      errorShift.textContent = "This shift is already in database. Choose another name!";
+      isValid = false;
+    }
+  }
 }
 
 function renderShifts(shiftObj, parentTag) {
   const trTag = document.createElement("tr");
   const tagObject = Object.keys(shiftObj);
   tagObject.forEach((item) => {
-    if (item !== "email" && item !== "comment" && item !== "shift") {
-      const tdTag = document.createElement("td");
-      if (item === "hourlyWage") {
-        tdTag.textContent = `${shiftObj[item]} $`;
-        trTag.appendChild(tdTag);
-      } else {
-        tdTag.textContent = shiftObj[item];
-        trTag.appendChild(tdTag);
+    if (window.location.pathname === "/index.html") {
+      if (item !== "email" && item !== "comment" && item !== "shift" && item !== "hourlyWage") {
+        const tdTag = document.createElement("td");
+        if (item === "hourlyWage") {
+          tdTag.textContent = `${shiftObj[item]} $`;
+          trTag.appendChild(tdTag);
+        } else {
+          tdTag.textContent = shiftObj[item];
+          trTag.appendChild(tdTag);
+        }
+      }
+    }
+    if (window.location.pathname === "/myShifts.html") {
+      if (item !== "email" && item !== "comment" && item !== "shift") {
+        const tdTag = document.createElement("td");
+        if (item === "hourlyWage") {
+          tdTag.textContent = `${shiftObj[item]} $`;
+          trTag.appendChild(tdTag);
+        } else {
+          tdTag.textContent = shiftObj[item];
+          trTag.appendChild(tdTag);
+        }
       }
     }
   });
   trTag.classList.add("shifts__tr");
-  const tdTagProfit = document.createElement("td");
-  tdTagProfit.textContent = `${calculateProfit(shiftObj)} $`;
-  trTag.appendChild(tdTagProfit);
+  //daca se afla in pagina myShifts.html se randeaza butonul de edit shift
   if (window.location.pathname === "/myShifts.html") {
+    const tdTagProfit = document.createElement("td");
+    tdTagProfit.textContent = `${calculateProfit(shiftObj)} $`;
+    trTag.appendChild(tdTagProfit);
+
     const tdTagBtn = document.createElement("td");
     const button = document.createElement("button");
     button.classList.add("btn");
@@ -75,6 +98,7 @@ function calculateProfit(shiftObj) {
 }
 
 function openModal(shiftObj) {
+  let isValid = true;
   date.value = shiftObj.dateCreatedShift;
   timeStart.value = shiftObj.startShiftTime;
   timeEnd.value = shiftObj.endShiftTime;
@@ -86,19 +110,34 @@ function openModal(shiftObj) {
 
   modal.classList.remove("hide");
 
+  const shiftDb = getDb("shiftDb");
+  const shiftDbTemp = [...shiftDb];
+  const index = shiftDbTemp.findIndex((element) => element.shift === shift.value);
+  shiftDbTemp.splice(index, 1);
+
+  closeModal.addEventListener("click", () => modal.classList.add("hide"));
+
   addShift.addEventListener("click", (e) => {
     e.preventDefault();
-    const shiftDb = getDb("shiftDb");
-    const shiftDbTemp = [...shiftDb];
-    const index = shiftDbTemp.findIndex((element) => element.shift === shift.value);
-    shiftDbTemp.splice(index, 1);
-    shiftDb.forEach((element) => {
-      if (element.shift === shift.value) {
-        element.hourlyWage = hourlyWage.value;
-      }
-    });
-    modal.classList.add("hide");
-    tbody.innerHTML = "";
-    showShifts(shiftDb, tbody);
+
+    checkShift(shiftDbTemp);
+    console.log(shiftDbTemp, isValid, "index ", index);
+    if (isValid) {
+      shiftDb.forEach((element) => {
+        if (element.shift === shift.value) {
+          element.dateCreatedShift = date.value;
+          element.startShiftTime = timeStart.value;
+          element.endShiftTime = timeEnd.value;
+          element.workplace = workplace.value;
+          element.hourlyWage = hourlyWage.value;
+          element.comment = comments.value;
+          element.shift = shift.value;
+        }
+      });
+      localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
+      modal.classList.add("hide");
+      tbody.innerHTML = "";
+      showShifts(shiftDb, tbody);
+    }
   });
 }

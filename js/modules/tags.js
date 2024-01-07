@@ -62,4 +62,14 @@ export const editShift = document.querySelector("#editShift");
 export const table = document.querySelector("#table");
 export const tr = document.querySelector("#tr");
 export const tbody = document.querySelector("#tbody");
+//myshifts.html >>> filter section
+export const workplaceFilter = document.querySelector("#workplaceFilter");
+export const searchShift = document.querySelector("#searchShift");
+
+export const startDate = document.querySelector("#startDate");
+export const endDate = document.querySelector("#endDate");
+export const searchDate = document.querySelector("#searchDate");
+
+//modal
 export const modal = document.querySelector("#modal");
+export const closeModal = document.querySelector("#closeModal");

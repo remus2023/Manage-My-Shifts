@@ -6,10 +6,49 @@
     <link rel="stylesheet" href="./style/style.css" />
     <title>My Shifts</title>
     <script type="module" src="./js/myShifts.js" defer></script>
-    <script type="module" src="./js/header.js" defer></script>
+    <script type="module" src="./js/modules/header.js" defer></script>
   </head>
   <body>
-    <header></header>
+    <header>
+      <img src="./images/company-logo.png" alt="Logo" class="navbar__img" />
+      <nav class="navbar">
+        <ul class="navbar__links">
+          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
+          <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
+          <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
+          <li class="navbar__item"><a href="#" class="navbar__link">My profile</a></li>
+        </ul>
+        <div class="navbar__user">
+          <span class="navbar__span" id="userSpan"></span><button class="btn btn--logout" id="logOutBtn">LogOut</button>
+        </div>
+      </nav>
+    </header>
+    <section class="filter">
+      <div class="filter__shift">
+        <form>
+          <label for="workplaceFilter" class="filter__label">Workplace</label>
+          <select name="" id="workplaceFilter" class="filter__shift-input">
+            <option value="Paint Shop">Paint Shop</option>
+            <option value="Human Resources">Human Resources</option>
+            <option value="Power Train Operation">Power Train Operation</option>
+            <option value="Body Shop">Body Shop</option>
+            <option value="Marketplace">Marketplace</option>
+            <option value="Vehicle Operation">Vehicle Operation</option>
+            <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
+          </select>
+          <button class="filter__search-shift" id="searchShift">Search by Shift</button>
+        </form>
+      </div>
+      <div class="filter__date">
+        <form>
+          <label for="startDate" class="filter__label">Start Date</label>
+          <input type="date" name="startDate" id="startDate" />
+          <label for="EndDate" class="filter__label">End Date</label>
+          <input type="date" name="endDate" id="endDate" />
+          <button class="filter__btn-date" id="searchDate">Search by Date</button>
+        </form>
+      </div>
+    </section>
     <section class="shifts">
       <h1 class="shifts__title">Display my shifts</h1>
       <table class="shifts__table" id="table">
@@ -26,7 +65,7 @@
         </thead>
 
         <tbody id="tbody">
-          <tr class="shifts__tr" id="tr">
+          <!-- <tr class="shifts__tr" id="tr">
             <td>19-11-2023</td>
             <td>19:23</td>
             <td>23:59</td>
@@ -34,20 +73,22 @@
             <td>shift3</td>
             <td>340$</td>
             <td>Edit shift</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </section>
+    <!-- edit modal -->
     <section class="modal hide" id="modal">
       <div class="modal__container">
+        <img src="./images/nok.png" alt="Close" class="modal__img" id="closeModal" />
         <!-- html from addShift.html -->
         <div class="shift__content">
-          <h1 class="shift__title">Change data on your shift</h1>
+          <h1 class="shift__title">Update data on your shift</h1>
           <form class="shift__form">
             <div class="shift__box" data-empty="no">
               <div class="shift__input-box">
                 <label for="date" class="shift__label">Date</label>
-                <input type="date" class="shift__input" id="date" required />
+                <input type="date" class="shift__input" id="date" />
                 <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorDate" />
               </div>
               <p class="shift__error hide" id="errorDate"></p>
@@ -71,7 +112,7 @@
             <div class="shift__box" data-empty="no">
               <div class="shift__input-box">
                 <label for="hourlyWage" class="shift__label">Hourly Wage</label>
-                <input type="text" class="shift__input" id="hourlyWage" required />
+                <input type="text" class="shift__input" id="hourlyWage" />
                 <img src="./images/nok.png" alt="Error" class="shift__img hide" />
               </div>
               <p class="shift__error hide"></p>
@@ -79,7 +120,7 @@
             <div class="shift__box" data-empty="yes">
               <div class="shift__input-box">
                 <label for="workplace" class="shift__label">Workplace</label>
-                <select name="" id="workplace" class="shift__input shift__input--workplace" required>
+                <select name="" id="workplace" class="shift__input shift__input--workplace">
                   <option value="Paint Shop">Paint Shop</option>
                   <option value="Human Resources">Human Resources</option>
                   <option value="Power Train Operation">Power Train Operation</option>
@@ -104,13 +145,25 @@
                 <textarea class="shift__input shift__input--comment" cols="30" rows="7" id="comments"></textarea>
               </div>
             </div>
-            <button class="btn" id="addShift">Add shift</button>
+            <button class="btn" id="addShift">Update shift</button>
           </form>
         </div>
         <!-- end html from addShift.html -->
       </div>
     </section>
 
-    <footer></footer>
+    <footer>
+      <nav class="navbar">
+        <ul class="navbar__links">
+          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
+          <li class="navbar__item"><a href="#" class="navbar__link">My Shifts</a></li>
+          <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
+          <li class="navbar__item"><a href="#" class="navbar__link">My profile</a></li>
+        </ul>
+        <div class="navbar__user">
+          <span class="navbar__span">Hello usera</span><button class="btn btn--logout">LogOut</button>
+        </div>
+      </nav>
+    </footer>
   </body>
 </html>

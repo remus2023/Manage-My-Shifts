@@ -451,6 +451,15 @@ header {
   width: -moz-max-content;
   width: max-content;
   border-radius: 5px;
+  position: relative;
+}
+.modal__img {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  cursor: pointer;
 }
 
 footer {

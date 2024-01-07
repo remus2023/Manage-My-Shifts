@@ -8,7 +8,8 @@ import {
   signIn,
   dataLength,
 } from "./modules/tags.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid, preventBack } from "./modules/functions.js";
+import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
+import { preventBack } from "./modules/logFunction.js";
 
 window.onload = () => {
   preventBack();
@@ -24,7 +25,7 @@ function checkUser() {
   let userCheck = usersDb.find((element) => element.username === userName.value);
   //first check if user exist in db
   if (userCheck) {
-    addRemoveClassesValid(userName, userNameError, userNameImg);
+    addRemoveClassesValid(userName, userNameError, userNameImg, "login__input--valid", "login__input--error");
     //then check if user password in correct
     if (userCheck.password !== password.value) {
       addRemoveClassesInvalid(password, passwordError, passwordImg, "login__input--valid", "login__input--error");

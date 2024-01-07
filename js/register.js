@@ -22,7 +22,8 @@ import {
   createAccount,
   dataLength,
 } from "./modules/tags.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid, preventBack } from "./modules/functions.js";
+import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
+import { preventBack } from "./modules/logFunction.js";
 window.onload = () => {
   preventBack();
 };

@@ -3,22 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register page</title>
+    <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./style/login.css" />
-    <script type="module" src="./js/register.js" defer></script>
-    <!-- <script type="module" src="./js/header.js" defer></script> -->
+    <script type="module" src="./js/editProfile.js" defer></script>
+    <script type="module" src="./js/modules/header.js" defer></script>
+    <title>Edit profile</title>
   </head>
   <body>
+    <header>
+      <img src="./images/company-logo.png" alt="Logo" class="navbar__img" />
+      <nav class="navbar">
+        <ul class="navbar__links">
+          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
+          <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
+          <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
+          <li class="navbar__item"><a href="./editProfile.html" class="navbar__link">My profile</a></li>
+        </ul>
+        <div class="navbar__user">
+          <span class="navbar__span" id="userSpan"></span><button class="btn btn--logout" id="logOutBtn">LogOut</button>
+        </div>
+      </nav>
+    </header>
     <section class="register-box">
       <div class="register-box__content">
         <div class="login">
-          <h1 class="login__title">Create Account</h1>
+          <h1 class="login__title">Update your profile</h1>
           <form class="login__form" id="loginForm">
             <div class="login__box" id="loginBox" data-length="6">
               <label class="login__label" for="userName" id="userNameLabel">User Name</label>
               <input class="login__input" type="text" id="userName" placeholder="User Name" />
               <p class="login__error hide" id="userNameError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" id="userNameImg" />
+              <img src="./images/ok.png" alt="OK" class="login__img hide" />
             </div>
             <div class="login__box" id="loginBox" data-length="2">
               <label class="login__label" for="firstName" id="firstNameLabel">First Name</label>
@@ -32,7 +47,7 @@
               <p class="login__error hide" id="lastNameError"></p>
               <img src="./images/ok.png" alt="OK" class="login__img hide" />
             </div>
-            <div class="login__box" id="loginBox" data-length="1">
+            <div class="login__box" id="loginBox">
               <label class="login__label" for="age" id="ageLabel">Age</label>
               <input class="login__input" type="number" id="age" placeholder="Age" />
               <p class="login__error hide" id="ageError"></p>
@@ -46,16 +61,26 @@
             </div>
             <div class="login__box" id="loginBox">
               <label class="login__label" for="email" id="emailLabel">Email</label>
-              <input class="login__input" type="email" id="email" placeholder="Email" />
+              <input class="login__input" type="email" id="email" placeholder="Email" disabled />
               <p class="login__error hide" id="emailError"></p>
               <img src="./images/ok.png" alt="OK" class="login__img hide" id="emailImg" />
             </div>
-            <button class="btn" id="createAccount">Create account</button>
+            <button class="btn" id="createAccount">Update</button>
           </form>
-          <a href="./login.html"><button class="btn btn--logout">Cancel</button></a>
         </div>
       </div>
       <div class="register-box__banner"></div>
     </section>
+
+    <footer>
+      <nav class="navbar">
+        <ul class="navbar__links">
+          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
+          <li class="navbar__item"><a href="#" class="navbar__link">My Shifts</a></li>
+          <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
+          <li class="navbar__item"><a href="#" class="navbar__link">My profile</a></li>
+        </ul>
+      </nav>
+    </footer>
   </body>
 </html>

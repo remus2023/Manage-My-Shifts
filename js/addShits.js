@@ -27,8 +27,14 @@ addShift.addEventListener("click", function (e) {
   e.preventDefault();
   checkEmpty();
   checkTime();
-  checkShift(shiftDb);
-  if (isValid) registerShift();
+
+  console.log(checkShift(shiftDb, isValid));
+  isValid = checkShift(shiftDb, isValid);
+  console.log(isValid, checkShift(shiftDb, isValid));
+  if (isValid) {
+    console.log("inregistrare");
+    //registerShift();
+  }
 });
 
 date.addEventListener("input", () => {
@@ -100,6 +106,19 @@ function checkTime() {
     }
   }
 }
+
+// function checkShift(shiftDataBase) {
+//   if (shift.value) {
+//     const findShift = shiftDataBase.find((element) => shift.value === element.shift);
+//     if (!findShift) {
+//       addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+//     } else {
+//       addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+//       errorShift.textContent = "This shift is already in database. Choose another name!";
+//       isValid = false;
+//     }
+//   }
+// }
 
 function registerShift() {
   const newShift = {

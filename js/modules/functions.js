@@ -22,21 +22,6 @@ export function showShifts(sortedShifts, parentTag) {
   sortedShifts.forEach((element) => renderShifts(element, parentTag));
 }
 
-//functie din addShifts.js mutata aici din cauza erori
-let isValid = true;
-export function checkShift(shiftDataBase) {
-  if (shift.value) {
-    const findShift = shiftDataBase.find((element) => shift.value === element.shift);
-    if (!findShift) {
-      addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-    } else {
-      addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-      errorShift.textContent = "This shift is already in database. Choose another name!";
-      isValid = false;
-    }
-  }
-}
-
 function renderShifts(shiftObj, parentTag) {
   const trTag = document.createElement("tr");
   const tagObject = Object.keys(shiftObj);
@@ -140,4 +125,21 @@ function openModal(shiftObj) {
       showShifts(shiftDb, tbody);
     }
   });
+}
+
+//functie din addShifts.js mutata aici din cauza erori
+export function checkShift(shiftDataBase, valid) {
+  console.log(shift.value);
+  if (shift.value !== "") {
+    const findShift = shiftDataBase.find((element) => shift.value === element.shift);
+    if (!findShift) {
+      addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+      return valid;
+    } else {
+      addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
+      errorShift.textContent = "This shift is already in database. Choose another name!";
+      valid = false;
+      return valid;
+    }
+  }
 }

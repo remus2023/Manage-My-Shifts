@@ -62,6 +62,7 @@ export const editShift = document.querySelector("#editShift");
 export const table = document.querySelector("#table");
 export const tr = document.querySelector("#tr");
 export const tbody = document.querySelector("#tbody");
+export const maxMonthProfit = document.querySelector("#maxMonthProfit");
 //myshifts.html >>> filter section
 export const workplaceFilter = document.querySelector("#workplaceFilter");
 export const searchShift = document.querySelector("#searchShift");

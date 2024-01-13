@@ -27,7 +27,7 @@ function renderShifts(shiftObj, parentTag) {
   const tagObject = Object.keys(shiftObj);
   tagObject.forEach((item) => {
     if (window.location.pathname === "/index.html") {
-      if (item !== "email" && item !== "comment" && item !== "shift" && item !== "hourlyWage") {
+      if (item !== "comment" && item !== "shift" && item !== "hourlyWage") {
         const tdTag = document.createElement("td");
         if (item === "hourlyWage") {
           tdTag.textContent = `${shiftObj[item]} $`;
@@ -39,7 +39,7 @@ function renderShifts(shiftObj, parentTag) {
       }
     }
     if (window.location.pathname === "/myShifts.html") {
-      if (item !== "email" && item !== "comment" && item !== "shift") {
+      if (item !== "username" && item !== "comment" && item !== "shift") {
         const tdTag = document.createElement("td");
         if (item === "hourlyWage") {
           tdTag.textContent = `${shiftObj[item]} $`;
@@ -73,7 +73,7 @@ function renderShifts(shiftObj, parentTag) {
   parentTag.appendChild(trTag);
 }
 
-function calculateProfit(shiftObj) {
+export function calculateProfit(shiftObj) {
   const startDate = shiftObj.dateCreatedShift + " " + shiftObj.startShiftTime;
   const endDate = shiftObj.dateCreatedShift + " " + shiftObj.endShiftTime;
   const startDateFormat = new Date(startDate);

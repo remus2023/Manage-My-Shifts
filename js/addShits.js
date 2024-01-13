@@ -33,7 +33,7 @@ addShift.addEventListener("click", function (e) {
   console.log(isValid, checkShift(shiftDb, isValid));
   if (isValid) {
     console.log("inregistrare");
-    //registerShift();
+    registerShift();
   }
 });
 
@@ -129,7 +129,7 @@ function registerShift() {
     workplace: workplace.value,
     shift: shift.value,
     comment: comments.value,
-    email: getUser().email,
+    username: getUser().username,
   };
   shiftDb.push(newShift);
   localStorage.setItem("shiftDb", JSON.stringify(shiftDb));

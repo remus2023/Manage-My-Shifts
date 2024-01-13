@@ -74,3 +74,20 @@ export const searchDate = document.querySelector("#searchDate");
 //modal
 export const modal = document.querySelector("#modal");
 export const closeModal = document.querySelector("#closeModal");
+
+//login forgot password
+export const login = document.querySelector("#login");
+export const forgot = document.querySelector("#forgot");
+export const forgotEmail = document.querySelector("#forgotEmail");
+export const resetPassword = document.querySelector("#resetPassword");
+export const btnCheckEmail = document.querySelector("#btnCheckEmail");
+export const btnForgotPassword = document.querySelector("#btnForgotPassword");
+export const btnResetPassword = document.querySelector("#btnResetPassword");
+
+export const forgotInputEmail = document.querySelector("#forgotInputEmail");
+export const forgotInputPassword = document.querySelector("#forgotInputPassword");
+export const forgotInputConfirm = document.querySelector("#forgotInputConfirm");
+export const forgotErrorEmail = document.querySelector("#forgotErrorEmail");
+export const forgotErrorPassword = document.querySelector("#forgotErrorPassword");
+export const forgotLabelUser = document.querySelector("#forgotLabelUser");
+export const forgotInputUser = document.querySelector("#forgotInputUser");

@@ -21,6 +21,8 @@ $bg-btn: #1577ea;
 $bg-green: #038829;
 $error-color: #ff4040;
 
+$bg-logout: #ffb032;
+
 body {
   max-width: 1440px;
   width: 100%;
@@ -48,8 +50,8 @@ body {
   }
 
   &--register {
-    border: 2px solid #ffb032;
-    background: #ffb032;
+    border: 2px solid $bg-logout;
+    background: $bg-logout;
     color: $bg-white;
 
     &:hover {
@@ -59,8 +61,8 @@ body {
   }
 
   &--logout {
-    border: 2px solid #ffb032;
-    background: #ffb032;
+    border: 2px solid $bg-logout;
+    background: $bg-logout;
     font-size: 14px;
     font-weight: 500;
     width: 150px;
@@ -72,8 +74,8 @@ body {
   }
 
   &--edit-shift {
-    border: 2px solid #ffb032;
-    background: #ffb032;
+    border: 2px solid $bg-logout;
+    background: $bg-logout;
     font-size: 14px;
     font-weight: 500;
     width: 100%;

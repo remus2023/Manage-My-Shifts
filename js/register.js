@@ -149,5 +149,5 @@ function register() {
   };
   usersDb.push(newUser);
   localStorage.setItem("usersDb", JSON.stringify(usersDb));
-  //window.location.href = "login.html";
+  window.location.href = "login.html";
 }

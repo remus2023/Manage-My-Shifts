@@ -36,7 +36,7 @@ export const dataLength = document.querySelectorAll("[data-length]");
 export const shiftBox = document.querySelectorAll("[data-empty]");
 export const addShift = document.querySelector("#addShift");
 export const date = document.querySelector("#date");
-export const timeStart = document.querySelector("#timeStart");
+// export const timeStart = document.querySelector("#timeStart");
 export const timeEnd = document.querySelector("#timeEnd");
 export const hourlyWage = document.querySelector("#hourlyWage");
 export const workplace = document.querySelector("#workplace");
@@ -71,9 +71,14 @@ export const startDate = document.querySelector("#startDate");
 export const endDate = document.querySelector("#endDate");
 export const searchDate = document.querySelector("#searchDate");
 
-//modal
+//modal edit
 export const modal = document.querySelector("#modal");
 export const closeModal = document.querySelector("#closeModal");
+
+//modal delete
+export const deleteModal = document.querySelector("#deleteModal");
+export const confirmDelete = document.querySelector("#confirmDelete");
+export const cancelDelete = document.querySelector("#cancelDelete");
 
 //login forgot password
 export const login = document.querySelector("#login");
@@ -91,3 +96,6 @@ export const forgotErrorEmail = document.querySelector("#forgotErrorEmail");
 export const forgotErrorPassword = document.querySelector("#forgotErrorPassword");
 export const forgotLabelUser = document.querySelector("#forgotLabelUser");
 export const forgotInputUser = document.querySelector("#forgotInputUser");
+
+//editprofile.html
+export const createAccountX = document.querySelector("#createAccountX");

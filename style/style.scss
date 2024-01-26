@@ -1,5 +1,5 @@
 @import "./global.scss";
-@import "./addShifts.scss";
+
 
 body {
     align-items: start
@@ -73,6 +73,14 @@ header {
             background: #f8f4eb;
         }
     }
+
+    &__edit {
+        @include flexBox(180px, auto, row, space-between, center, 5px);
+    }
+
+    &__title {
+        @include typography($color-black, 32px, normal, 500, normal, normal, none, center);
+    }
 }
 
 .modal {
@@ -87,11 +95,9 @@ header {
     background-color: rgba(0, 0, 0, 0.4);
 
     &__container {
-        background-color: #fefefe;
+        @include flexBox(515px, auto, row, space-between, center, unset);
         margin: 15% auto;
         padding: 20px;
-        border: 1px solid #888;
-        width: max-content;
         border-radius: 5px;
         position: relative;
 
@@ -101,9 +107,39 @@ header {
         width: 48px;
         height: 48px;
         position: absolute;
-        right: -20px;
-        top: -20px;
+        right: 0px;
+        top: 0px;
         cursor: pointer;
+    }
+}
+
+.delete {
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &__container {
+        background-color: #fefefe;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border: 1px solid #888;
+        width: max-content;
+        border-radius: 5px;
+        position: absolute;
+    }
+
+    &__buttons {
+        @include flexBox(500px, auto, row, space-between, center, 25px);
+        margin-top: 35px;
     }
 }
 

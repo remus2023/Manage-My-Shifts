@@ -29,9 +29,9 @@
         <div class="login">
           <h1 class="login__title">Update your profile</h1>
           <form class="login__form" id="loginForm">
-            <div class="login__box" id="loginBox" data-length="6">
+            <div class="login__box" id="loginBox">
               <label class="login__label" for="userName" id="userNameLabel">User Name</label>
-              <input class="login__input" type="text" id="userName" placeholder="User Name" />
+              <input class="login__input" type="text" id="userName" placeholder="User Name" disabled />
               <p class="login__error hide" id="userNameError"></p>
               <img src="./images/ok.png" alt="OK" class="login__img hide" />
             </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="login__box" id="loginBox">
               <label class="login__label" for="age" id="ageLabel">Age</label>
-              <input class="login__input" type="number" id="age" placeholder="Age" />
+              <input class="login__input" type="number" id="age" placeholder="Age" disabled />
               <p class="login__error hide" id="ageError"></p>
               <img src="./images/ok.png" alt="OK" class="login__img hide" id="ageImg" />
             </div>
@@ -65,7 +65,7 @@
               <p class="login__error hide" id="emailError"></p>
               <img src="./images/ok.png" alt="OK" class="login__img hide" id="emailImg" />
             </div>
-            <button class="btn" id="createAccount">Update</button>
+            <button class="btn" id="createAccountX">Update</button>
           </form>
         </div>
       </div>

@@ -69,6 +69,31 @@ body {
 .btn--edit-shift:hover {
   background: #f1c071;
 }
+.btn--delete-shift {
+  border: 2px solid #ff4040;
+  background: #ff4040;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  height: 38px;
+  padding: 0 4px;
+}
+.btn--delete-shift:hover {
+  background: #ff7070;
+}
+.btn--search {
+  border: 2px solid #1577ea;
+  background: #1577ea;
+  font-size: 14px;
+  font-weight: 500;
+  width: -moz-max-content;
+  width: max-content;
+  height: 30px;
+  padding: 0 10px;
+}
+.btn--search:hover {
+  background: #3694ff;
+}
 
 .register-box {
   max-width: 1000px;
@@ -96,6 +121,197 @@ body {
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+}
+
+.filter {
+  max-width: 1000px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.filter__box {
+  max-width: 490px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: unset;
+}
+.filter__label {
+  color: #161616;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: right;
+}
+.filter__input {
+  color: #161616;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  height: 32px;
+  border-radius: 5px;
+  outline: none;
+  padding: 0 10px;
+  border: 1px solid #e8e8e8;
+}
+
+.shift {
+  max-width: 1000px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content;
+  gap: 50px;
+}
+.shift__content {
+  max-width: 475px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+}
+.shift__banner {
+  max-width: 475px;
+  width: 100%;
+  height: 100%;
+  background: url(../images/login.jpeg) no-repeat center/cover;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+}
+.shift__img {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  right: 261px;
+  top: 6px;
+}
+.shift__title {
+  color: #1577ea;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: center;
+}
+.shift__form {
+  max-width: 475px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.shift__box {
+  max-width: 475px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 7px;
+}
+.shift__label {
+  color: #161616;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: right;
+  max-width: 100px;
+  width: 100%;
+}
+.shift__input-box {
+  max-width: 475px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  position: relative;
+}
+.shift__error {
+  color: #ff4040;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  padding-left: 140px;
+}
+.shift__input {
+  max-width: 290px;
+  width: 100%;
+  height: 32px;
+  padding: 5px 15px 5px 35px;
+  color: #161616;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  opacity: 0.55;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  outline: none;
+}
+.shift__input:focus {
+  background: #f7fffc;
+  border: 1px solid #038829;
+  color: #038829;
+}
+.shift__input--error {
+  border: 1px solid #ff4040;
+  color: #ff4040;
+}
+.shift__input--valid {
+  border: 1px solid #038829;
+  color: #038829;
+}
+.shift__input--workplace {
+  padding: 5px;
+}
+.shift__input--comment {
+  height: auto;
+  padding: 5px;
+}
+.shift__input--search {
+  max-width: 170px;
+  padding: 5px;
 }
 
 .hide {

@@ -24,30 +24,26 @@
       </nav>
     </header>
     <section class="filter">
-      <div class="filter__shift">
-        <form>
-          <label for="workplaceFilter" class="filter__label">Workplace</label>
-          <select name="" id="workplaceFilter" class="filter__shift-input">
-            <option value="Paint Shop">Paint Shop</option>
-            <option value="Human Resources">Human Resources</option>
-            <option value="Power Train Operation">Power Train Operation</option>
-            <option value="Body Shop">Body Shop</option>
-            <option value="Marketplace">Marketplace</option>
-            <option value="Vehicle Operation">Vehicle Operation</option>
-            <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
-          </select>
-          <button class="filter__search-shift" id="searchShift">Search by Shift</button>
-        </form>
-      </div>
-      <div class="filter__date">
-        <form>
-          <label for="startDate" class="filter__label">Start Date</label>
-          <input type="date" name="startDate" id="startDate" />
-          <label for="EndDate" class="filter__label">End Date</label>
-          <input type="date" name="endDate" id="endDate" />
-          <button class="filter__btn-date" id="searchDate">Search by Date</button>
-        </form>
-      </div>
+      <form class="filter__box">
+        <label for="workplaceFilter" class="filter__label">Workplace</label>
+        <select name="" id="workplaceFilter" class="filter__input">
+          <option value="Paint Shop">Paint Shop</option>
+          <option value="Human Resources">Human Resources</option>
+          <option value="Power Train Operation">Power Train Operation</option>
+          <option value="Body Shop">Body Shop</option>
+          <option value="Marketplace">Marketplace</option>
+          <option value="Vehicle Operation">Vehicle Operation</option>
+          <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
+        </select>
+        <button class="btn btn--search" id="searchShift">Search</button>
+      </form>
+      <form class="filter__box">
+        <label for="startDate" class="filter__label">From</label>
+        <input type="date" name="startDate" id="startDate" class="filter__input" />
+        <label for="endDate" class="filter__label">To</label>
+        <input type="date" name="endDate" id="endDate" class="filter__input" />
+        <button class="btn btn--search" id="searchDate">Search</button>
+      </form>
     </section>
     <section class="shifts">
       <h1 class="shifts__title">Display my shifts</h1>
@@ -59,8 +55,8 @@
             <th>End time</th>
             <th>Hourly wage</th>
             <th>Workplace</th>
-            <th>Total profit per shift</th>
-            <th></th>
+            <th>Total profit</th>
+            <th>Edit/Delete</th>
           </tr>
         </thead>
 
@@ -79,6 +75,16 @@
     </section>
     <!-- section for the best profitable month -->
     <section class="wage" id="maxMonthProfit">Cea mai buna luna este</section>
+    <!-- delete modal -->
+    <section class="delete hide" id="deleteModal">
+      <div class="delete__container">
+        <p>Are you sure you want to delete this shift?</p>
+        <div class="delete__buttons">
+          <button class="btn btn--edit-shift" id="confirmDelete">Confirm</button>
+          <button class="btn btn--delete-shift" id="cancelDelete">Cancel</button>
+        </div>
+      </div>
+    </section>
     <!-- edit modal -->
     <section class="modal hide" id="modal">
       <div class="modal__container">
@@ -143,7 +149,7 @@
             </div>
             <div class="shift__box" data-empty="yes">
               <div class="shift__input-box">
-                <label for="commnets" class="shift__label">Comments</label>
+                <label for="comments" class="shift__label">Comments</label>
                 <textarea class="shift__input shift__input--comment" cols="30" rows="7" id="comments"></textarea>
               </div>
             </div>

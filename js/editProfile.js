@@ -19,12 +19,11 @@ import {
   emailLabel,
   emailError,
   emailImg,
-  createAccount,
+  createAccountX,
   dataLength,
 } from "./modules/tags.js";
 import { getUser, getDb } from "./modules/fetch.js";
-import { checkLength } from "./register.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid } from "./modules/functions.js";
+import { checkLength } from "./modules/functions.js";
 
 let usersDb = getDb("usersDb");
 
@@ -38,11 +37,13 @@ function getUserInfo(user) {
 }
 getUserInfo(getUser());
 
-createAccount.addEventListener("click", (e) => {
+createAccountX.addEventListener("click", (e) => {
   let isValid = true;
   e.preventDefault();
-  checkLength();
+  isValid = checkLength(isValid);
+  console.log(isValid);
   if (isValid) {
+    //actualizeaza in usersDB campurile modificate
     usersDb.forEach((element) => {
       if (element.email === getUser().email) {
         element.username = userName.value;
@@ -52,6 +53,7 @@ createAccount.addEventListener("click", (e) => {
         element.password = password.value;
       }
     });
+    //obiect folosit pentru a actualiza in localstorage usersDB in timp real
     let newUser = {
       username: userName.value,
       firstname: firstName.value,
@@ -63,7 +65,6 @@ createAccount.addEventListener("click", (e) => {
     localStorage.setItem("loggedUser", JSON.stringify(newUser));
     console.log(getUser(), usersDb);
     localStorage.setItem("usersDb", JSON.stringify(usersDb));
-    console.log(getDb("usersDbClone"));
     //window.location.href = "index.html";
   }
 });

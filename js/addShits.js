@@ -132,5 +132,12 @@ function registerShift() {
   shiftDb.push(newShift);
   localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
   alert("Your shift was successfully add into database");
-  window.location.href = "addShifts.html";
+  date.value = "";
+  timeStart.value = "";
+  timeEnd.value = "";
+  hourlyWage.value = "";
+  workplace.value = "Paint Shop";
+  shift.value = "";
+  comments.value = "";
+  // window.location.href = "addShifts.html";
 }

@@ -6,22 +6,81 @@ body {
 }
 
 header {
-    @include flexBox(1000px, auto, column, space-between, center, 20px);
+    @include flexBox(1000px, auto, column, space-between, center, unset);
+
+    // @media (max-width:1000px) {
+    //     max-width: 768px;
+    // }
+
 }
 
 .navbar {
-    @include flexBox(1000px, auto, row, space-between, center, unset);
-    background: $bg-white;
-    padding: 20px 20px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+    @include flexBox(1000px, auto, column, space-between, center, 10px);
+
+    &__browser {
+        @include flexBox(1000px, auto, row, space-between, center, unset);
+        background: $bg-white;
+        padding: 10px 27px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 8px -4px rgba(73, 93, 207, 0.2);
+        position: relative;
+
+        @media (max-width:850px) {
+            padding: 10px 10px;
+        }
+
+        @media (max-width:768px) {
+            padding: 10px 35px;
+        }
+
+        @media (max-width:500px) {
+            padding: 10px 20px;
+        }
+    }
 
     &__img {
-        width: 770px;
+        width: 125px;
+
+        @media (max-width:768px) {
+            width: 100px;
+        }
     }
 
     &__links {
         @include flexBox(max-content, auto, row, center, center, 30px);
+
+        @media (max-width:850px) {
+            gap: 15px;
+        }
+
+        @media (max-width:768px) {
+            display: none;
+        }
+    }
+
+    &__footer {
+        @include flexBox(1000px, auto, row, space-evenly, center, 10px);
+    }
+
+    &__footer-links {
+        @include flexBox(max-content, auto, row, center, center, 30px);
+
+        @media (max-width:768px) {
+            gap: 15px;
+        }
+
+        @media (max-width:500px) {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    &__copyright {
+        @include typography($color-black, 16px, normal, 500, normal, normal, none, center, $font-changed: true);
+    }
+
+    &__mobile-links {
+        @include flexBox(1000px, auto, row, space-around, center, unset);
     }
 
     &__item {
@@ -29,38 +88,136 @@ header {
         padding: 0 15px;
         background: $bg-green;
         border-radius: 5px;
+
+        @media (max-width:768px) {
+            padding: 0 10px;
+        }
+
+        @media (max-width:500px) {
+            padding: 0 5px;
+            height: 25px;
+        }
     }
+
+    &__mobile-item {
+        @include flexBox(max-content, 25px, row, center, center, unset);
+        padding: 0 5px;
+        background: $bg-green;
+        border-radius: 5px;
+        border: 1px solid $bg-green;
+
+        &:hover {
+            background: #0fa339;
+        }
+
+        @media (min-width:768px) {
+            display: none;
+        }
+    }
+
 
     &__link {
         @include typography($bg-white, 14px, normal, 500, normal, normal, none, center);
 
+        @media (max-width:768px) {
+            font-size: 13px;
+        }
+
+        @media (max-width:500px) {
+            font-size: 12px;
+            width: 200px;
+        }
+    }
+
+    &__mobile-link {
+        @include typography($bg-white, 12px, normal, 500, normal, normal, none, center);
     }
 
     &__user {
-        @include flexBox(max-content, auto, row, center, center, 35px);
+        @include flexBox(max-content, auto, column, center, center, 10px);
+
+        @media (max-width:768px) {
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        @media (max-width:500px) {
+            flex-direction: column;
+            gap: 10px;
+        }
     }
 
     &__span {
         min-width: min-content;
-        @include typography($bg-btn, 24px, normal, 500, normal, normal, none, center);
+        @include typography($bg-btn, 16px, normal, 500, normal, normal, none, center, $font-changed: true);
     }
+
+    &__hamburger-menu {
+        cursor: pointer;
+        display: none;
+
+        @media (max-width:768px) {
+            display: block;
+        }
+    }
+
+    &__hamburger-img {
+        width: 40px;
+        height: 40px;
+    }
+
+
 }
 
 .shifts {
     @include flexBox(1000px, auto, column, space-between, center, 20px);
 
+    @media (max-width:1000px) {
+        overflow: scroll;
+    }
+
     &__table {
-        width: 100%;
+        width: 1000px;
         border-style: none;
         border-collapse: collapse;
 
+        @media (max-width:768px) {
+            width: 895px;
+        }
+
+        @media (max-width:500px) {
+            width: 825px;
+        }
+
+
         th,
         td {
-            text-align: center;
-            padding: 15px 10px;
-            color: brown;
-            // border-bottom: 1px solid red;
+            @include typography(brown, 16px, normal, 500, normal, normal, none, center);
+            padding: 15px 17px;
 
+            // border-bottom: 1px solid red;
+            @media (max-width:768px) {
+                font-size: 14px;
+                padding: 12px 14px;
+            }
+
+            @media (max-width:500px) {
+                font-size: 12px;
+                padding: 9px 14px;
+            }
+        }
+
+    }
+
+    &__workplace {
+        width: 182px;
+
+        @media (max-width:768px) {
+            width: 170px;
+        }
+
+        @media (max-width:500px) {
+            width: 158px;
         }
 
     }
@@ -75,11 +232,28 @@ header {
     }
 
     &__edit {
-        @include flexBox(180px, auto, row, space-between, center, 5px);
+        @include flexBox(210px, auto, row, space-between, center, 15px);
+
+        @media (max-width:768px) {
+            width: 185px;
+        }
+
+        // @media (max-width:500px) {
+        //     width: 170px;
+        // }
+
     }
 
     &__title {
-        @include typography($color-black, 32px, normal, 500, normal, normal, none, center);
+        @include typography($color-black, 26px, normal, 500, normal, normal, none, center);
+
+        @media (max-width:768px) {
+            font-size: 24px;
+        }
+
+        @media (max-width:500px) {
+            font-size: 22px;
+        }
     }
 }
 
@@ -145,4 +319,8 @@ header {
 
 footer {
     @include flexBox(1000px, auto, column, space-between, center, 20px);
+}
+
+.hide {
+    display: none;
 }

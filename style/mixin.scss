@@ -1,11 +1,9 @@
-@mixin flexBox(
-  $flex-width,
+@mixin flexBox($flex-width,
   $flex-height,
   $flex-direction,
   $flex-justify-content: flex-start,
   $flex-align-items: stretch,
-  $flex-gap: normal
-) {
+  $flex-gap: normal) {
   max-width: $flex-width;
   width: 100%;
   height: $flex-height;
@@ -16,16 +14,14 @@
   gap: $flex-gap;
 }
 
-@mixin typography(
-  $font-color,
+@mixin typography($font-color,
   $font-size,
   $font-style,
   $font-weight,
   $font-lineHeight,
   $font-spacing,
   $font-transform,
-  $text-align
-) {
+  $text-align, $font-changed: false) {
   color: $font-color;
   font-size: $font-size;
   font-style: $font-style;
@@ -34,4 +30,14 @@
   letter-spacing: $font-spacing;
   text-transform: $font-transform;
   text-align: $text-align;
+
+  @if $font-changed {
+    @media (max-width:768px) {
+      font-size: 14px;
+    }
+
+    @media (max-width:500px) {
+      font-size: 12px;
+    }
+  }
 }

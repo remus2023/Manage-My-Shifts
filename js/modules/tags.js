@@ -99,3 +99,9 @@ export const forgotInputUser = document.querySelector("#forgotInputUser");
 
 //editprofile.html
 export const createAccountX = document.querySelector("#createAccountX");
+
+//Hamburger Menu
+export const hamburgerOpen = document.querySelector("#hamburgerOpen");
+export const hamburgerClose = document.querySelector("#hamburgerClose");
+export const navbarLinks = document.querySelector("#navbarLinks");
+export const navbarMobileLinks = document.querySelector("#navbarMobileLinks");

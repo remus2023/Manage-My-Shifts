@@ -1,32 +1,32 @@
 import { getDb } from "./fetch.js";
-// import {
-//   date,
-//   // timeStart,
-//   timeEnd,
-//   // hourlyWage,
-//   workplace,
-//   shift,
-//   comments,
-//   addShift,
-//   modal,
-//   closeModal,
-//   dataLength,
-//   deleteModal,
-//   confirmDelete,
-//   cancelDelete,
-//   shiftBox,
-//   errorTimeEnd,
-//   errorTimeStart,
-//   imgErrorTimeStart,
-//   imgErrorTimeEnd,
-// } from "./tags.js";
+import {
+  date,
+  timeStart,
+  timeEnd,
+  hourlyWage,
+  workplace,
+  shift,
+  comments,
+  addShift,
+  modal,
+  closeModal,
+  dataLength,
+  deleteModal,
+  confirmDelete,
+  cancelDelete,
+  shiftBox,
+  errorTimeEnd,
+  errorTimeStart,
+  imgErrorTimeStart,
+  imgErrorTimeEnd,
+} from "./tags.js";
 import { validateShift } from "./validateShift.js";
 import { showBestMonth } from "./validateShift.js";
+import { getUser } from "./fetch.js";
 
 //import { checkShift } from "../addShits.js";
 //import { shiftBox } from "./tags.js";
 // de ce daca decomentez sus imi da eroare in index.html???
-const shiftBox = document.querySelectorAll("[data-empty]");
 
 let shiftDb = getDb("shiftDb");
 
@@ -69,6 +69,7 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
   // trTag.setAttribute("data-page", Math.ceil(index / 3));
   // console.log(trTag.dataset);
   const tagObject = Object.keys(shiftObj);
+  console.log(tagObject);
   tagObject.forEach((item) => {
     if (window.location.pathname === "/index.html") {
       if (item !== "comment" && item !== "shift" && item !== "hourlyWage") {
@@ -85,7 +86,11 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
     if (window.location.pathname === "/myShifts.html") {
       if (item !== "username" && item !== "comment" && item !== "shift") {
         const tdTag = document.createElement("td");
-        if (item === "hourlyWage") {
+        if (item === "workplace") {
+          tdTag.textContent = shiftObj[item];
+          tdTag.classList.add("shifts__workplace");
+          trTag.appendChild(tdTag);
+        } else if (item === "hourlyWage") {
           tdTag.textContent = `${shiftObj[item]} $`;
           trTag.appendChild(tdTag);
         } else {
@@ -156,7 +161,10 @@ function openEditModal(sortedShifts, shiftObj) {
   const index = shiftDbTemp.findIndex((element) => element.shift === shift.value);
   shiftDbTemp.splice(index, 1);
   let shiftTemp = shift.value;
-  closeModal.addEventListener("click", () => modal.classList.add("hide"));
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hide");
+    resetInput("shift__input--valid", "shift__input--error");
+  });
 
   // addShift.addEventListener("click", (e) => {
   //   e.preventDefault();
@@ -186,7 +194,7 @@ function openEditModal(sortedShifts, shiftObj) {
   const clickHandler = (e) => {
     e.preventDefault();
     if (validateShift(shiftDbTemp)) {
-      sortedShifts.forEach((element) => {
+      shiftDb.forEach((element) => {
         if (element.shift === shiftTemp) {
           element.dateCreatedShift = date.value;
           element.startShiftTime = timeStart.value;
@@ -198,10 +206,11 @@ function openEditModal(sortedShifts, shiftObj) {
         }
       });
       resetInput("shift__input--valid", "shift__input--error");
-      localStorage.setItem("shiftDb", JSON.stringify(sortedShifts));
+      localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
       //daca am comentat linia de jos si dau update de 2 ori dispare. de ce?
       modal.classList.add("hide");
       tbody.innerHTML = "";
+      sortedShifts = shiftDb.filter((element) => element.username === getUser().username);
       showShifts(sortedShifts, tbody);
       showBestMonth(sortedShifts);
       addShift.removeEventListener("click", clickHandler);
@@ -258,4 +267,39 @@ export function checkLength(isValidCheck) {
     }
   });
   return isValidCheck;
+}
+
+//functii folosite in index si in myshift pentru cautare dupa workplace si dupa data
+export function searchWorkplace(searchTag, shiftDb) {
+  searchTag.addEventListener("click", (e) => {
+    e.preventDefault();
+    // selectez din nou baza de date pentru ca intre timp e posibil sa fi editat un shift si sa nu fie actualizata cautarea
+    const filteredShifts = shiftDb.filter((element) => element.workplace === workplaceFilter.value);
+    if (filteredShifts.length) {
+      tbody.innerHTML = "";
+      showShifts(filteredShifts, tbody);
+      console.log("filtered", filteredShifts, worklaceFilter.value);
+    } else {
+      tbody.innerHTML = "No results";
+    }
+  });
+}
+
+export function searchByDate(searchTag, shiftDb) {
+  searchTag.addEventListener("click", (e) => {
+    e.preventDefault();
+    const startDateFormat = new Date(startDate.value);
+    const endDateFormat = new Date(endDate.value);
+    const sss = Date(endDate.value);
+    console.log(sss, endDateFormat);
+    // selectez din nou baza de date pentru ca intre timp e posibil sa fi editat un shift si sa nu fie actualizata cautarea
+    const filteredShifts = shiftDb.filter((element) => {
+      const dateFormat = new Date(element.dateCreatedShift);
+      return dateFormat.getTime() <= endDateFormat.getTime() && dateFormat.getTime() >= startDateFormat.getTime();
+    });
+    tbody.innerHTML = "";
+    showShifts(filteredShifts, tbody);
+
+    console.log(filteredShifts);
+  });
 }

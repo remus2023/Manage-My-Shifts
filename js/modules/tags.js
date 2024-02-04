@@ -36,7 +36,7 @@ export const dataLength = document.querySelectorAll("[data-length]");
 export const shiftBox = document.querySelectorAll("[data-empty]");
 export const addShift = document.querySelector("#addShift");
 export const date = document.querySelector("#date");
-// export const timeStart = document.querySelector("#timeStart");
+export const timeStart = document.querySelector("#timeStart");
 export const timeEnd = document.querySelector("#timeEnd");
 export const hourlyWage = document.querySelector("#hourlyWage");
 export const workplace = document.querySelector("#workplace");
@@ -99,3 +99,9 @@ export const forgotInputUser = document.querySelector("#forgotInputUser");
 
 //editprofile.html
 export const createAccountX = document.querySelector("#createAccountX");
+
+//Hamburger Menu
+export const hamburgerOpen = document.querySelector("#hamburgerOpen");
+export const hamburgerClose = document.querySelector("#hamburgerClose");
+export const navbarLinks = document.querySelector("#navbarLinks");
+export const navbarMobileLinks = document.querySelector("#navbarMobileLinks");

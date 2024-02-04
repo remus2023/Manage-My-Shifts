@@ -11,75 +11,92 @@
   </head>
   <body>
     <header>
-      <img src="./images/company-logo.png" alt="Logo" class="navbar__img" />
       <nav class="navbar">
-        <ul class="navbar__links">
-          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
+        <div class="navbar__browser">
+          <img src="./images/company-logo.png" alt="Logo" class="navbar__img" />
+          <ul class="navbar__links" id="navbarLinks">
+            <li class="navbar__item"><a href="./index.html" class="navbar__link">Home</a></li>
+            <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
+            <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
+            <li class="navbar__item"><a href="./editProfile.html" class="navbar__link">My profile</a></li>
+          </ul>
+          <div class="navbar__user">
+            <span class="navbar__span" id="userSpan"></span><button class="btn btn--logout" id="logOutBtn">LogOut</button>
+          </div>
+          <div class="navbar__hamburger-menu">
+            <img class="navbar__hamburger-img" src="./images/hamburger-menu-open.jpg" alt="Hamburger Menu" id="hamburgerOpen" />
+            <img
+              class="navbar__hamburger-img hide"
+              src="./images/hamburger-menu-close.jpg"
+              alt="Hamburger Menu"
+              id="hamburgerClose"
+            />
+          </div>
+        </div>
+        <ul class="navbar__mobile-links hide" id="navbarMobileLinks">
+          <li class="navbar__mobile-item"><a href="./index.html" class="navbar__mobile-link">Home</a></li>
+          <li class="navbar__mobile-item"><a href="./myShifts.html" class="navbar__mobile-link">My Shifts</a></li>
+          <li class="navbar__mobile-item"><a href="./addShifts.html" class="navbar__mobile-link">Add a Shift</a></li>
+          <li class="navbar__mobile-item"><a href="./editProfile.html" class="navbar__mobile-link">My profile</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="register-box">
+      <div class="register-box__banner"></div>
+
+      <div class="login">
+        <h1 class="login__title">Update your profile</h1>
+        <form class="login__form" id="loginForm">
+          <div class="login__box" id="loginBox">
+            <label class="login__label" for="userName" id="userNameLabel">User Name</label>
+            <input class="login__input" type="text" id="userName" placeholder="User Name" disabled />
+            <p class="login__error hide" id="userNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
+          </div>
+          <div class="login__box" id="loginBox" data-length="2">
+            <label class="login__label" for="firstName" id="firstNameLabel">First Name</label>
+            <input class="login__input" type="text" id="firstName" placeholder="First Name" />
+            <p class="login__error hide" id="firstNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
+          </div>
+          <div class="login__box" id="loginBox" data-length="2">
+            <label class="login__label" for="lastName" id="lastNameLabel">Last Name</label>
+            <input class="login__input" type="text" id="lastName" placeholder="Last Name" />
+            <p class="login__error hide" id="lastNameError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
+          </div>
+          <div class="login__box" id="loginBox">
+            <label class="login__label" for="age" id="ageLabel">Age</label>
+            <input class="login__input" type="number" id="age" placeholder="Age" disabled />
+            <p class="login__error hide" id="ageError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" id="ageImg" />
+          </div>
+          <div class="login__box" id="loginBox" data-length="6">
+            <label class="login__label" for="password" id="passwordLabel">Password</label>
+            <input class="login__input" type="password" id="password" placeholder="Password" maxlength="19" />
+            <p class="login__error hide" id="passwordError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" />
+          </div>
+          <div class="login__box" id="loginBox">
+            <label class="login__label" for="email" id="emailLabel">Email</label>
+            <input class="login__input" type="email" id="email" placeholder="Email" disabled />
+            <p class="login__error hide" id="emailError"></p>
+            <img src="./images/ok.png" alt="OK" class="login__img hide" id="emailImg" />
+          </div>
+          <button class="btn" id="createAccountX">Update</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <nav class="navbar__footer">
+        <ul class="navbar__footer-links">
+          <li class="navbar__item"><a href="./index.html" class="navbar__link">Home</a></li>
           <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
           <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
           <li class="navbar__item"><a href="./editProfile.html" class="navbar__link">My profile</a></li>
         </ul>
-        <div class="navbar__user">
-          <span class="navbar__span" id="userSpan"></span><button class="btn btn--logout" id="logOutBtn">LogOut</button>
-        </div>
-      </nav>
-    </header>
-    <section class="register-box">
-      <div class="register-box__content">
-        <div class="login">
-          <h1 class="login__title">Update your profile</h1>
-          <form class="login__form" id="loginForm">
-            <div class="login__box" id="loginBox">
-              <label class="login__label" for="userName" id="userNameLabel">User Name</label>
-              <input class="login__input" type="text" id="userName" placeholder="User Name" disabled />
-              <p class="login__error hide" id="userNameError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" />
-            </div>
-            <div class="login__box" id="loginBox" data-length="2">
-              <label class="login__label" for="firstName" id="firstNameLabel">First Name</label>
-              <input class="login__input" type="text" id="firstName" placeholder="First Name" />
-              <p class="login__error hide" id="firstNameError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" />
-            </div>
-            <div class="login__box" id="loginBox" data-length="2">
-              <label class="login__label" for="lastName" id="lastNameLabel">Last Name</label>
-              <input class="login__input" type="text" id="lastName" placeholder="Last Name" />
-              <p class="login__error hide" id="lastNameError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" />
-            </div>
-            <div class="login__box" id="loginBox">
-              <label class="login__label" for="age" id="ageLabel">Age</label>
-              <input class="login__input" type="number" id="age" placeholder="Age" disabled />
-              <p class="login__error hide" id="ageError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" id="ageImg" />
-            </div>
-            <div class="login__box" id="loginBox" data-length="6">
-              <label class="login__label" for="password" id="passwordLabel">Password</label>
-              <input class="login__input" type="password" id="password" placeholder="Password" maxlength="19" />
-              <p class="login__error hide" id="passwordError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" />
-            </div>
-            <div class="login__box" id="loginBox">
-              <label class="login__label" for="email" id="emailLabel">Email</label>
-              <input class="login__input" type="email" id="email" placeholder="Email" disabled />
-              <p class="login__error hide" id="emailError"></p>
-              <img src="./images/ok.png" alt="OK" class="login__img hide" id="emailImg" />
-            </div>
-            <button class="btn" id="createAccountX">Update</button>
-          </form>
-        </div>
-      </div>
-      <div class="register-box__banner"></div>
-    </section>
-
-    <footer>
-      <nav class="navbar">
-        <ul class="navbar__links">
-          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
-          <li class="navbar__item"><a href="#" class="navbar__link">My Shifts</a></li>
-          <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
-          <li class="navbar__item"><a href="#" class="navbar__link">My profile</a></li>
-        </ul>
+        <p class="navbar__copyright">Remus Project 2023</p>
       </nav>
     </footer>
   </body>

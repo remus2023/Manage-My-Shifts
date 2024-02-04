@@ -10,17 +10,34 @@
   </head>
   <body>
     <header>
-      <img src="./images/company-logo.png" alt="Logo" class="navbar__img" />
       <nav class="navbar">
-        <ul class="navbar__links">
-          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
-          <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
-          <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
-          <li class="navbar__item"><a href="./editProfile.html" class="navbar__link">My profile</a></li>
-        </ul>
-        <div class="navbar__user">
-          <span class="navbar__span" id="userSpan"></span><button class="btn btn--logout" id="logOutBtn">LogOut</button>
+        <div class="navbar__browser">
+          <img src="./images/company-logo.png" alt="Logo" class="navbar__img" />
+          <ul class="navbar__links" id="navbarLinks">
+            <li class="navbar__item"><a href="./index.html" class="navbar__link">Home</a></li>
+            <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
+            <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
+            <li class="navbar__item"><a href="./editProfile.html" class="navbar__link">My profile</a></li>
+          </ul>
+          <div class="navbar__user">
+            <span class="navbar__span" id="userSpan"></span><button class="btn btn--logout" id="logOutBtn">LogOut</button>
+          </div>
+          <div class="navbar__hamburger-menu">
+            <img class="navbar__hamburger-img" src="./images/hamburger-menu-open.jpg" alt="Hamburger Menu" id="hamburgerOpen" />
+            <img
+              class="navbar__hamburger-img hide"
+              src="./images/hamburger-menu-close.jpg"
+              alt="Hamburger Menu"
+              id="hamburgerClose"
+            />
+          </div>
         </div>
+        <ul class="navbar__mobile-links hide" id="navbarMobileLinks">
+          <li class="navbar__mobile-item"><a href="./index.html" class="navbar__mobile-link">Home</a></li>
+          <li class="navbar__mobile-item"><a href="./myShifts.html" class="navbar__mobile-link">My Shifts</a></li>
+          <li class="navbar__mobile-item"><a href="./addShifts.html" class="navbar__mobile-link">Add a Shift</a></li>
+          <li class="navbar__mobile-item"><a href="./editProfile.html" class="navbar__mobile-link">My profile</a></li>
+        </ul>
       </nav>
     </header>
     <section class="filter">
@@ -33,15 +50,19 @@
           <option value="Body Shop">Body Shop</option>
           <option value="Marketplace">Marketplace</option>
           <option value="Vehicle Operation">Vehicle Operation</option>
-          <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
+          <option value="MP&L">MP&L</option>
         </select>
         <button class="btn btn--search" id="searchShift">Search</button>
       </form>
       <form class="filter__box">
-        <label for="startDate" class="filter__label">From</label>
-        <input type="date" name="startDate" id="startDate" class="filter__input" />
-        <label for="endDate" class="filter__label">To</label>
-        <input type="date" name="endDate" id="endDate" class="filter__input" />
+        <div>
+          <label for="startDate" class="filter__label">From</label>
+          <input type="date" name="startDate" id="startDate" class="filter__input" />
+        </div>
+        <div>
+          <label for="endDate" class="filter__label">To</label>
+          <input type="date" name="endDate" id="endDate" class="filter__input" />
+        </div>
         <button class="btn btn--search" id="searchDate">Search</button>
       </form>
     </section>
@@ -135,7 +156,7 @@
                   <option value="Body Shop">Body Shop</option>
                   <option value="Marketplace">Marketplace</option>
                   <option value="Vehicle Operation">Vehicle Operation</option>
-                  <option value="Material, Planning, and Logistics">Material, Planning, and Logistics</option>
+                  <option value="MP&L">MP&L</option>
                 </select>
               </div>
             </div>
@@ -161,16 +182,14 @@
     </section>
 
     <footer>
-      <nav class="navbar">
-        <ul class="navbar__links">
-          <a href="./index.html" class="navbar__link"><li class="navbar__item">Home</li></a>
-          <li class="navbar__item"><a href="#" class="navbar__link">My Shifts</a></li>
+      <nav class="navbar__footer">
+        <ul class="navbar__footer-links">
+          <li class="navbar__item"><a href="./index.html" class="navbar__link">Home</a></li>
+          <li class="navbar__item"><a href="./myShifts.html" class="navbar__link">My Shifts</a></li>
           <li class="navbar__item"><a href="./addShifts.html" class="navbar__link">Add a Shift</a></li>
-          <li class="navbar__item"><a href="#" class="navbar__link">My profile</a></li>
+          <li class="navbar__item"><a href="./editProfile.html" class="navbar__link">My profile</a></li>
         </ul>
-        <div class="navbar__user">
-          <span class="navbar__span">Hello usera</span><button class="btn btn--logout">LogOut</button>
-        </div>
+        <p class="navbar__copyright">Remus Project 2023</p>
       </nav>
     </footer>
   </body>

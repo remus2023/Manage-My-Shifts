@@ -32,17 +32,29 @@
             />
           </div>
         </div>
-        <ul class="navbar__mobile-links hide" id="navbarMobileLinks">
-          <li class="navbar__mobile-item"><a href="./index.html" class="navbar__mobile-link">Home</a></li>
-          <li class="navbar__mobile-item"><a href="./myShifts.html" class="navbar__mobile-link">My Shifts</a></li>
-          <li class="navbar__mobile-item"><a href="./addShifts.html" class="navbar__mobile-link">Add a Shift</a></li>
-          <li class="navbar__mobile-item"><a href="./editProfile.html" class="navbar__mobile-link">My profile</a></li>
+        <ul class="navbar__mobile-links" id="navbarMobileLinks">
+          <li class="navbar__mobile-item">
+            <img src="./images/home.png" alt="Home" class="navbar__mobile-img" />
+            <a href="./index.html" class="navbar__mobile-link">Home</a>
+          </li>
+          <li class="navbar__mobile-item">
+            <img src="./images/shifts.png" alt="My Shifts" class="navbar__mobile-img" />
+            <a href="./myShifts.html" class="navbar__mobile-link">My Shifts</a>
+          </li>
+          <li class="navbar__mobile-item">
+            <img src="./images/add-shift.png" alt="Add Shift" class="navbar__mobile-img" />
+            <a href="./addShifts.html" class="navbar__mobile-link">Add a Shift</a>
+          </li>
+          <li class="navbar__mobile-item">
+            <img src="./images/edit-profile.png" alt="Edit profile" class="navbar__mobile-img" />
+            <a href="./editProfile.html" class="navbar__mobile-link">My profile</a>
+          </li>
         </ul>
       </nav>
     </header>
     <section class="filter">
       <form class="filter__box">
-        <label for="workplaceFilter" class="filter__label">Workplace</label>
+        <!-- <label for="workplaceFilter" class="filter__label">Workplace</label> -->
         <select name="" id="workplaceFilter" class="filter__input">
           <option value="Paint Shop">Paint Shop</option>
           <option value="Human Resources">Human Resources</option>
@@ -56,11 +68,11 @@
       </form>
       <form class="filter__box">
         <div>
-          <label for="startDate" class="filter__label">From</label>
+          <!-- <label for="startDate" class="filter__label">From</label> -->
           <input type="date" name="startDate" id="startDate" class="filter__input" />
         </div>
         <div>
-          <label for="endDate" class="filter__label">To</label>
+          <!-- <label for="endDate" class="filter__label">To</label> -->
           <input type="date" name="endDate" id="endDate" class="filter__input" />
         </div>
         <button class="btn btn--search" id="searchDate">Search</button>
@@ -95,7 +107,7 @@
       </table>
     </section>
     <!-- section for the best profitable month -->
-    <section class="wage" id="maxMonthProfit">Cea mai buna luna este</section>
+    <section class="shifts__title" id="maxMonthProfit">Cea mai buna luna este</section>
     <!-- delete modal -->
     <section class="delete hide" id="deleteModal">
       <div class="delete__container">
@@ -141,7 +153,7 @@
             <div class="shift__box" data-empty="no">
               <div class="shift__input-box">
                 <label for="hourlyWage" class="shift__label">Hourly Wage</label>
-                <input type="text" class="shift__input" id="hourlyWage" />
+                <input type="number" class="shift__input" id="hourlyWage" />
                 <img src="./images/nok.png" alt="Error" class="shift__img hide" />
               </div>
               <p class="shift__error hide"></p>

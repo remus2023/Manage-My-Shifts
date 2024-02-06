@@ -105,3 +105,4 @@ export const hamburgerOpen = document.querySelector("#hamburgerOpen");
 export const hamburgerClose = document.querySelector("#hamburgerClose");
 export const navbarLinks = document.querySelector("#navbarLinks");
 export const navbarMobileLinks = document.querySelector("#navbarMobileLinks");
+export const mobileModal = document.querySelector("#mobileModal");

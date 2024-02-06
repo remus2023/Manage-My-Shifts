@@ -45,7 +45,7 @@ export function checkEmail(label, input, error, img, usersDb) {
   const foundEmail = usersDb.some((element) => element.email === input.value);
   if (foundEmail && isValidEmail) {
     addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
-    error.textContent = `${label.textContent} is already in our database. Please choose another mail!`;
+    error.textContent = `${label.textContent} is already taken. Please choose another mail!`;
     isValid = false;
   }
   console.log("verif email: ", isValid);
@@ -65,9 +65,7 @@ export function checkUserName(label, input, error, img, usersDb) {
   const foundUserName = usersDb.some((element) => element.username === input.value);
   if (foundUserName) {
     addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
-    error.textContent = `${label.textContent} is already in our database. Please choose another User Name!`;
+    error.textContent = `${label.textContent} is already taken. Please choose another User Name!`;
     isValid = false;
   }
 }
-
-// function checkName(label, input, error, img) {}

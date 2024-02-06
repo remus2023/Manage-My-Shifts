@@ -64,7 +64,6 @@ btnForgotPassword.addEventListener("click", (e) => {
   forgot.classList.remove("hide");
 
   btnCheckEmail.addEventListener("click", (e) => {
-    console.log("click");
     e.preventDefault();
     const usersDb = getDb("usersDb");
     const isValidEmail = usersDb.find((element) => element.email === forgotInputEmail.value);

@@ -122,7 +122,7 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
       openEditModal(sortedShifts, shiftObj);
     });
     buttonDelete.addEventListener("click", () => {
-      openDeleteModal(shiftObj);
+      openDeleteModal(sortedShifts, shiftObj);
     });
     tdTagBtn.append(buttonEdit, buttonDelete);
     trTag.appendChild(tdTagBtn);
@@ -142,17 +142,12 @@ export function calculateProfit(shiftObj) {
 function openEditModal(sortedShifts, shiftObj) {
   // let isValid = true;
   date.value = shiftObj.dateCreatedShift;
-
-  console.log(timeStart.value);
   timeStart.value = shiftObj.startShiftTime;
-  console.log(timeStart.value);
-
   timeEnd.value = shiftObj.endShiftTime;
   hourlyWage.value = shiftObj.hourlyWage;
   workplace.value = shiftObj.workplace;
   shift.value = shiftObj.shift;
   comments.value = shiftObj.comment;
-  console.log(date, shift.value, shiftObj);
 
   modal.classList.remove("hide");
 
@@ -165,31 +160,6 @@ function openEditModal(sortedShifts, shiftObj) {
     modal.classList.add("hide");
     resetInput("shift__input--valid", "shift__input--error");
   });
-
-  // addShift.addEventListener("click", (e) => {
-  //   e.preventDefault();
-
-  //   // isValid = checkShift(shiftDbTemp, isValid);
-  //   // console.log(shiftDbTemp, isValid, "index ", index);
-  //   if (validateShift(shiftDbTemp)) {
-  //     shiftDb.forEach((element) => {
-  //       if (element.shift === shift.value) {
-  //         element.dateCreatedShift = date.value;
-  //         element.startShiftTime = timeStart.value;
-  //         element.endShiftTime = timeEnd.value;
-  //         element.workplace = workplace.value;
-  //         element.hourlyWage = hourlyWage.value;
-  //         element.comment = comments.value;
-  //         element.shift = shift.value;
-  //       }
-  //       // console.log(">>> ", isValid, shift.value);
-  //     });
-  //     localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
-  //     modal.classList.add("hide");
-  //     tbody.innerHTML = "";
-  //     showShifts(shiftDb, tbody);
-  //   }
-  // });
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -219,14 +189,15 @@ function openEditModal(sortedShifts, shiftObj) {
   addShift.addEventListener("click", clickHandler);
 }
 
-function openDeleteModal(shiftObj) {
+function openDeleteModal(sortedShifts, shiftObj) {
   deleteModal.classList.remove("hide");
   confirmDelete.addEventListener("click", () => {
-    //let shiftDb = getDb("shiftDb");
+    let shiftDb = getDb("shiftDb");
     console.log(shiftDb[0].username, shiftObj.username);
     sortedShifts = sortedShifts.filter((element) => element.shift !== shiftObj.shift);
+    shiftDb = shiftDb.filter((element) => element.shift !== shiftObj.shift);
     console.log(shiftDb);
-    localStorage.setItem("shiftDb", JSON.stringify(sortedShifts));
+    localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
     deleteModal.classList.add("hide");
     tbody.innerHTML = "";
     showShifts(sortedShifts, tbody);
@@ -250,7 +221,6 @@ export function checkLength(isValidCheck) {
       loginInput.classList.remove("login__input--error");
       loginImg.classList.add("hide");
     });
-    console.log("intrare");
     if (!loginInput.value) {
       addRemoveClassesInvalid(loginInput, loginError, loginImg, "login__input--valid", "login__input--error");
       loginError.textContent = `${loginLabel.textContent} can't be empty`;
@@ -278,7 +248,6 @@ export function searchWorkplace(searchTag, shiftDb) {
     if (filteredShifts.length) {
       tbody.innerHTML = "";
       showShifts(filteredShifts, tbody);
-      console.log("filtered", filteredShifts, worklaceFilter.value);
     } else {
       tbody.innerHTML = "No results";
     }
@@ -290,8 +259,6 @@ export function searchByDate(searchTag, shiftDb) {
     e.preventDefault();
     const startDateFormat = new Date(startDate.value);
     const endDateFormat = new Date(endDate.value);
-    const sss = Date(endDate.value);
-    console.log(sss, endDateFormat);
     // selectez din nou baza de date pentru ca intre timp e posibil sa fi editat un shift si sa nu fie actualizata cautarea
     const filteredShifts = shiftDb.filter((element) => {
       const dateFormat = new Date(element.dateCreatedShift);
@@ -299,7 +266,5 @@ export function searchByDate(searchTag, shiftDb) {
     });
     tbody.innerHTML = "";
     showShifts(filteredShifts, tbody);
-
-    console.log(filteredShifts);
   });
 }

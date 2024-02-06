@@ -78,7 +78,7 @@ function checkShift(shiftDataBase) {
       console.log("1 ", isValid, "shift ", shift.value);
     } else {
       addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-      errorShift.textContent = "This shift is already in database. Choose another name!";
+      errorShift.textContent = "This shift is already taken. Choose another name!";
       isValid = false;
       console.log("2 ", isValid, "shift ", shift.value);
     }
@@ -86,7 +86,7 @@ function checkShift(shiftDataBase) {
 }
 
 export function showBestMonth(userShifts) {
-  const objnou = [
+  const months = [
     {
       month: "January",
       value: 0,
@@ -138,15 +138,15 @@ export function showBestMonth(userShifts) {
   ];
   userShifts.forEach((element) => {
     const date = new Date(element.dateCreatedShift);
-    objnou.forEach((item, index) => {
+    months.forEach((item, index) => {
       if (index === date.getMonth()) {
         item.value += Number(calculateProfit(element));
       }
     });
   });
-  objnou.sort((a, b) => b.value - a.value);
-  console.log(objnou);
-  maxMonthProfit.innerHTML = `The best profitable month is ${objnou[0].month} with a total earn of ${objnou[0].value.toFixed(
+  months.sort((a, b) => b.value - a.value);
+  console.log(months);
+  maxMonthProfit.innerHTML = `The best profitable month is ${months[0].month} with a total earn of ${months[0].value.toFixed(
     2
   )}$`;
 }

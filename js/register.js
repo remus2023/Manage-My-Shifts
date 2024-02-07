@@ -25,7 +25,6 @@ import {
 } from "./modules/tags.js";
 import { addRemoveClassesInvalid, addRemoveClassesValid, checkLength } from "./modules/functions.js";
 import { preventBack } from "./modules/logFunction.js";
-//import { checkLength, checkAge, checkEmail, checkUserName } from "./modules/registerFunctions.js";
 window.onload = () => {
   preventBack();
 };
@@ -41,16 +40,14 @@ createAccount.addEventListener("click", (e) => {
   checkAge(ageLabel, age, ageError, ageImg);
   checkEmail(emailLabel, email, emailError, emailImg);
   checkUserName(userNameLabel, userName, userNameError, userNameImg);
-  console.log(isValid);
   if (isValid) {
     register();
   }
 });
 
-export function checkEmail(label, input, error, img) {
+function checkEmail(label, input, error, img) {
   const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const isValidEmail = emailPattern.test(input.value);
-  console.log(isValidEmail);
   if (input.value) {
     if (!isValidEmail) {
       addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
@@ -70,7 +67,7 @@ export function checkEmail(label, input, error, img) {
   }
 }
 
-export function checkAge(label, input, error, img) {
+function checkAge(label, input, error, img) {
   if (input.value >= 18 && input.value <= 65) {
     addRemoveClassesValid(input, error, img, "login__input--valid", "login__input--error");
   } else if (input.value) {
@@ -80,35 +77,22 @@ export function checkAge(label, input, error, img) {
   }
 }
 
-export function checkUserName(label, input, error, img) {
+function checkUserName(label, input, error, img) {
   const foundUserName = usersDb.some((element) => element.username === input.value);
   if (foundUserName) {
     addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
     error.textContent = `${label.textContent} is already taken. Please choose another User Name!`;
     isValid = false;
   }
+  const patternSpecialChar = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/;
+  const isValidUser = patternSpecialChar.test(input.value);
+  if (!isValidUser) {
+    addRemoveClassesInvalid(input, error, img, "login__input--valid", "login__input--error");
+    error.textContent = `${label.textContent} must contains letters, number and a character`;
+    isValid = false;
+  }
+  console.log(isValidUser);
 }
-
-// function checkName(label, input, error, img) {}
-
-// function emptyCheck() {
-//   loginBox.forEach((element) => {
-//     const loginInput = element.querySelector(".login__input");
-//     const loginError = element.querySelector(".login__error");
-//     const loginLabel = element.querySelector(".login__label");
-//     //When I have an error and i want to edit input, must eliminate error style
-//     loginInput.addEventListener("input", () => {
-//       loginError.classList.add("hide");
-//       loginInput.classList.remove("login__input--error");
-//     });
-
-//     if (!loginInput.value) {
-//       loginError.textContent = `${loginLabel.textContent} can't be empty`;
-//       loginError.classList.remove("hide");
-//       loginInput.classList.add("login__input--error");
-//     }
-//   });
-// }
 
 function register() {
   let newUser = {

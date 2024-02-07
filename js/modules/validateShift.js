@@ -46,8 +46,6 @@ function checkTime() {
       addRemoveClassesValid(timeEnd, errorTimeEnd, imgErrorTimeEnd, "shift__input--valid", "shift__input--error");
       addRemoveClassesValid(startDate, errorStartDate, imgErrorStartDate, "shift__input--valid", "shift__input--error");
       addRemoveClassesValid(endDate, errorEndDate, imgErrorEndDate, "shift__input--valid", "shift__input--error");
-
-      console.log("checktime ", timeStart.value, timeEnd.value);
     }
   }
 }
@@ -74,7 +72,6 @@ function checkEmpty() {
     if (element.dataset.empty === "no" && !shiftInput.disabled) {
       if (shiftInput.value) {
         addRemoveClassesValid(shiftInput, shiftError, shiftImg, "shift__input--valid", "shift__input--error");
-        console.log("checkempty ", shiftInput.value);
       } else {
         addRemoveClassesInvalid(shiftInput, shiftError, shiftImg, "shift__input--valid", "shift__input--error");
         shiftError.textContent = `${shiftLabel.textContent} can't be empty!`;
@@ -86,17 +83,14 @@ function checkEmpty() {
 
 //functie din addShifts.js mutata aici din cauza erori
 function checkShift(shiftDataBase) {
-  console.log(shift.value);
   if (shift.value) {
     const findShift = shiftDataBase.find((element) => shift.value === element.shift);
     if (!findShift) {
       addRemoveClassesValid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
-      console.log("1 ", isValid, "shift ", shift.value);
     } else {
       addRemoveClassesInvalid(shift, errorShift, imgErrorShift, "shift__input--valid", "shift__input--error");
       errorShift.textContent = "This shift is already taken. Choose another name!";
       isValid = false;
-      console.log("2 ", isValid, "shift ", shift.value);
     }
   }
 }
@@ -161,7 +155,6 @@ export function showBestMonth(userShifts) {
     });
   });
   months.sort((a, b) => b.value - a.value);
-  console.log(months);
   maxMonthProfit.innerHTML = `The best profitable month is ${months[0].month} with a total earn of ${months[0].value.toFixed(
     2
   )}$`;

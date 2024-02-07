@@ -73,10 +73,8 @@ btnForgotPassword.addEventListener("click", (e) => {
       forgotErrorEmail.classList.add("hide");
       forgotLabelUser.textContent = `User Name for email: ${forgotInputEmail.value}`;
       forgotInputUser.value = isValidEmail.username;
-      console.log(isValidEmail.username);
       btnResetPassword.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log("in event", isValidEmail);
         if (
           forgotInputPassword.value === forgotInputConfirm.value &&
           forgotInputPassword.value &&

@@ -1,27 +1,20 @@
 import { getUser, getDb } from "./modules/fetch.js";
 import {
   addShift,
-  shiftBox,
   startDate,
   endDate,
   timeStart,
   timeEnd,
-  imgErrorStartDate,
-  imgErrorEndDate,
   imgErrorTimeStart,
   imgErrorTimeEnd,
-  errorStartDate,
-  errorEndDate,
   errorTimeStart,
   errorTimeEnd,
   hourlyWage,
   workplace,
   shift,
-  imgErrorShift,
-  errorShift,
   comments,
 } from "./modules/tags.js";
-import { addRemoveClassesInvalid, addRemoveClassesValid, resetInput } from "./modules/functions.js";
+import { resetInput } from "./modules/functions.js";
 import { validateShift } from "./modules/validateShift.js";
 let shiftDb = getDb("shiftDb");
 let isValid = true;

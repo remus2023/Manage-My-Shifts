@@ -72,7 +72,6 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
   // trTag.setAttribute("data-page", Math.ceil(index / 3));
   // console.log(trTag.dataset);
   const tagObject = Object.keys(shiftObj);
-  console.log(tagObject);
   tagObject.forEach((item) => {
     if (window.location.pathname === "/index.html") {
       if (
@@ -236,7 +235,6 @@ export function checkLength(isValidCheck) {
     const loginError = element.querySelector(".login__error");
     const loginLabel = element.querySelector(".login__label");
     const loginImg = element.querySelector(".login__img");
-    console.log(loginInput, loginError, loginLabel, Number(element.dataset.length));
     //When I have an error and i want to edit input, must eliminate error style
     loginInput.addEventListener("input", () => {
       loginError.classList.add("hide");
@@ -283,7 +281,7 @@ export function searchByDate(searchTag, shiftDb) {
     const endDateFormat = new Date(searchEndDate.value);
     // selectez din nou baza de date pentru ca intre timp e posibil sa fi editat un shift si sa nu fie actualizata cautarea
     const filteredShifts = shiftDb.filter((element) => {
-      const dateFormat = new Date(element.dateCreatedShift);
+      const dateFormat = new Date(element.dateStartShift);
       return dateFormat.getTime() <= endDateFormat.getTime() && dateFormat.getTime() >= startDateFormat.getTime();
     });
     tbody.innerHTML = "";

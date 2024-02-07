@@ -1,6 +1,6 @@
 import { getUser } from "./fetch.js";
 import { checkLogIn, logOut } from "./logFunction.js";
-import { hamburgerOpen, hamburgerClose, navbarMobileLinks } from "./tags.js";
+import { hamburgerOpen, hamburgerClose, navbarMobileLinks, logOutBtn } from "./tags.js";
 
 hamburgerOpen.addEventListener("click", () => {
   hamburgerOpen.classList.toggle("hide");
@@ -17,8 +17,6 @@ window.addEventListener("resize", function (e) {
     hamburgerOpen.classList.remove("hide");
     hamburgerClose.classList.add("hide");
     navbarMobileLinks.classList.remove("active");
-    console.log("ok");
-    // e.stopPropagation();
   }
 });
 window.onload = () => {

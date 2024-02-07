@@ -1,27 +1,4 @@
-import {
-  userName,
-  userNameLabel,
-  userNameError,
-  firstName,
-  firstNameLabel,
-  firstNameError,
-  lastName,
-  lastNameLabel,
-  lastNameError,
-  age,
-  ageLabel,
-  ageError,
-  ageImg,
-  password,
-  passwordLabel,
-  passwordError,
-  email,
-  emailLabel,
-  emailError,
-  emailImg,
-  createAccountX,
-  dataLength,
-} from "./modules/tags.js";
+import { userName, firstName, lastName, age, password, email, createAccountX } from "./modules/tags.js";
 import { getUser, getDb } from "./modules/fetch.js";
 import { checkLength } from "./modules/functions.js";
 
@@ -41,7 +18,7 @@ createAccountX.addEventListener("click", (e) => {
   let isValid = true;
   e.preventDefault();
   isValid = checkLength(isValid);
-  console.log(isValid);
+
   if (isValid) {
     //actualizeaza in usersDB campurile modificate
     usersDb.forEach((element) => {
@@ -63,8 +40,8 @@ createAccountX.addEventListener("click", (e) => {
       email: email.value,
     };
     localStorage.setItem("loggedUser", JSON.stringify(newUser));
-    console.log(getUser(), usersDb);
     localStorage.setItem("usersDb", JSON.stringify(usersDb));
+    alert("Your profile has been updated!");
     //window.location.href = "index.html";
   }
 });

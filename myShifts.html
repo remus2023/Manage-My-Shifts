@@ -69,11 +69,11 @@
       <form class="filter__box">
         <div>
           <!-- <label for="startDate" class="filter__label">From</label> -->
-          <input type="date" name="startDate" id="startDate" class="filter__input" />
+          <input type="date" name="startDate" id="searchStartDate" class="filter__input" />
         </div>
         <div>
           <!-- <label for="endDate" class="filter__label">To</label> -->
-          <input type="date" name="endDate" id="endDate" class="filter__input" />
+          <input type="date" name="endDate" id="searchEndDate" class="filter__input" />
         </div>
         <button class="btn btn--search" id="searchDate">Search</button>
       </form>
@@ -83,7 +83,6 @@
       <table class="shifts__table" id="table">
         <thead>
           <tr class="shifts__tr">
-            <th>Date</th>
             <th>Start time</th>
             <th>End time</th>
             <th>Hourly wage</th>
@@ -128,11 +127,11 @@
           <form class="shift__form">
             <div class="shift__box" data-empty="no">
               <div class="shift__input-box">
-                <label for="date" class="shift__label">Date</label>
-                <input type="date" class="shift__input" id="date" />
-                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorDate" />
+                <label for="startDate" class="shift__label">Start date</label>
+                <input type="date" class="shift__input" id="startDate" required />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorStartDate" />
               </div>
-              <p class="shift__error hide" id="errorDate"></p>
+              <p class="shift__error hide" id="errorStartDate"></p>
             </div>
             <div class="shift__box" data-empty="no">
               <div class="shift__input-box">
@@ -141,6 +140,14 @@
                 <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorTimeStart" />
               </div>
               <p class="shift__error hide" id="errorTimeStart"></p>
+            </div>
+            <div class="shift__box" data-empty="no">
+              <div class="shift__input-box">
+                <label for="endDate" class="shift__label">End date</label>
+                <input type="date" class="shift__input" id="endDate" required />
+                <img src="./images/nok.png" alt="Error" class="shift__img hide" id="imgErrorEndDate" />
+              </div>
+              <p class="shift__error hide" id="errorEndDate"></p>
             </div>
             <div class="shift__box" data-empty="no">
               <div class="shift__input-box">

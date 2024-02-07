@@ -35,7 +35,8 @@ export const dataLength = document.querySelectorAll("[data-length]");
 //addShifts.html
 export const shiftBox = document.querySelectorAll("[data-empty]");
 export const addShift = document.querySelector("#addShift");
-export const date = document.querySelector("#date");
+export const startDate = document.querySelector("#startDate");
+export const endDate = document.querySelector("#endDate");
 export const timeStart = document.querySelector("#timeStart");
 export const timeEnd = document.querySelector("#timeEnd");
 export const hourlyWage = document.querySelector("#hourlyWage");
@@ -43,8 +44,10 @@ export const workplace = document.querySelector("#workplace");
 export const shift = document.querySelector("#shift");
 export const comments = document.querySelector("#comments");
 
-export const imgErrorDate = document.querySelector("#imgErrorDate");
-export const errorDate = document.querySelector("#errorDate");
+export const imgErrorStartDate = document.querySelector("#imgErrorStartDate");
+export const errorStartDate = document.querySelector("#errorStartDate");
+export const imgErrorEndDate = document.querySelector("#imgErrorEndDate");
+export const errorEndDate = document.querySelector("#errorEndDate");
 export const imgErrorTimeStart = document.querySelector("#imgErrorTimeStart");
 export const errorTimeStart = document.querySelector("#errorTimeStart");
 export const imgErrorTimeEnd = document.querySelector("#imgErrorTimeEnd");
@@ -67,8 +70,8 @@ export const maxMonthProfit = document.querySelector("#maxMonthProfit");
 export const workplaceFilter = document.querySelector("#workplaceFilter");
 export const searchShift = document.querySelector("#searchShift");
 
-export const startDate = document.querySelector("#startDate");
-export const endDate = document.querySelector("#endDate");
+export const searchStartDate = document.querySelector("#searchStartDate");
+export const searchEndDate = document.querySelector("#searchEndDate");
 export const searchDate = document.querySelector("#searchDate");
 
 //modal edit
@@ -103,6 +106,4 @@ export const createAccountX = document.querySelector("#createAccountX");
 //Hamburger Menu
 export const hamburgerOpen = document.querySelector("#hamburgerOpen");
 export const hamburgerClose = document.querySelector("#hamburgerClose");
-export const navbarLinks = document.querySelector("#navbarLinks");
 export const navbarMobileLinks = document.querySelector("#navbarMobileLinks");
-export const mobileModal = document.querySelector("#mobileModal");

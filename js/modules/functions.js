@@ -1,6 +1,7 @@
 import { getDb } from "./fetch.js";
 import {
-  date,
+  searchStartDate,
+  searchEndDate,
   timeStart,
   timeEnd,
   hourlyWage,
@@ -19,6 +20,8 @@ import {
   errorTimeStart,
   imgErrorTimeStart,
   imgErrorTimeEnd,
+  startDate,
+  endDate,
 } from "./tags.js";
 import { validateShift } from "./validateShift.js";
 import { showBestMonth } from "./validateShift.js";
@@ -72,10 +75,19 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
   console.log(tagObject);
   tagObject.forEach((item) => {
     if (window.location.pathname === "/index.html") {
-      if (item !== "comment" && item !== "shift" && item !== "hourlyWage") {
+      if (
+        item !== "comment" &&
+        item !== "shift" &&
+        item !== "hourlyWage" &&
+        item !== "timeStartShift" &&
+        item !== "timeEndShift"
+      ) {
         const tdTag = document.createElement("td");
-        if (item === "hourlyWage") {
-          tdTag.textContent = `${shiftObj[item]} $`;
+        if (item === "dateStartShift") {
+          tdTag.textContent = `${shiftObj[item]} ${shiftObj["timeStartShift"]}`;
+          trTag.appendChild(tdTag);
+        } else if (item === "dateEndShift") {
+          tdTag.textContent = `${shiftObj[item]} ${shiftObj["timeEndShift"]}`;
           trTag.appendChild(tdTag);
         } else {
           tdTag.textContent = shiftObj[item];
@@ -84,14 +96,21 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
       }
     }
     if (window.location.pathname === "/myShifts.html") {
-      if (item !== "username" && item !== "comment" && item !== "shift") {
+      if (item !== "username" && item !== "comment" && item !== "shift" && item !== "timeStartShift" && item !== "timeEndShift") {
         const tdTag = document.createElement("td");
         if (item === "workplace") {
           tdTag.textContent = shiftObj[item];
           tdTag.classList.add("shifts__workplace");
           trTag.appendChild(tdTag);
-        } else if (item === "hourlyWage") {
+        }
+        if (item === "hourlyWage") {
           tdTag.textContent = `${shiftObj[item]} $`;
+          trTag.appendChild(tdTag);
+        } else if (item === "dateStartShift") {
+          tdTag.textContent = `${shiftObj[item]} ${shiftObj["timeStartShift"]}`;
+          trTag.appendChild(tdTag);
+        } else if (item === "dateEndShift") {
+          tdTag.textContent = `${shiftObj[item]} ${shiftObj["timeEndShift"]}`;
           trTag.appendChild(tdTag);
         } else {
           tdTag.textContent = shiftObj[item];
@@ -131,8 +150,8 @@ function renderShifts(sortedShifts, shiftObj, parentTag, index) {
 }
 
 export function calculateProfit(shiftObj) {
-  const startDate = shiftObj.dateCreatedShift + " " + shiftObj.startShiftTime;
-  const endDate = shiftObj.dateCreatedShift + " " + shiftObj.endShiftTime;
+  const startDate = shiftObj.dateStartShift + " " + shiftObj.timeStartShift;
+  const endDate = shiftObj.dateEndShift + " " + shiftObj.timeEndShift;
   const startDateFormat = new Date(startDate);
   const endDateFormat = new Date(endDate);
   const timeWork = (endDateFormat.getTime() - startDateFormat.getTime()) / 3600000;
@@ -141,9 +160,10 @@ export function calculateProfit(shiftObj) {
 
 function openEditModal(sortedShifts, shiftObj) {
   // let isValid = true;
-  date.value = shiftObj.dateCreatedShift;
-  timeStart.value = shiftObj.startShiftTime;
-  timeEnd.value = shiftObj.endShiftTime;
+  startDate.value = shiftObj.dateStartShift;
+  timeStart.value = shiftObj.timeStartShift;
+  endDate.value = shiftObj.dateEndShift;
+  timeEnd.value = shiftObj.timeEndShift;
   hourlyWage.value = shiftObj.hourlyWage;
   workplace.value = shiftObj.workplace;
   shift.value = shiftObj.shift;
@@ -166,9 +186,10 @@ function openEditModal(sortedShifts, shiftObj) {
     if (validateShift(shiftDbTemp)) {
       shiftDb.forEach((element) => {
         if (element.shift === shiftTemp) {
-          element.dateCreatedShift = date.value;
-          element.startShiftTime = timeStart.value;
-          element.endShiftTime = timeEnd.value;
+          element.dateStartShift = startDate.value;
+          element.timeStartShift = timeStart.value;
+          element.dateEndShift = endDate.value;
+          element.timeEndShift = timeEnd.value;
           element.workplace = workplace.value;
           element.hourlyWage = hourlyWage.value;
           element.comment = comments.value;
@@ -201,6 +222,7 @@ function openDeleteModal(sortedShifts, shiftObj) {
     deleteModal.classList.add("hide");
     tbody.innerHTML = "";
     showShifts(sortedShifts, tbody);
+    showBestMonth(sortedShifts);
   });
   cancelDelete.addEventListener("click", () => {
     deleteModal.classList.add("hide");
@@ -257,8 +279,8 @@ export function searchWorkplace(searchTag, shiftDb) {
 export function searchByDate(searchTag, shiftDb) {
   searchTag.addEventListener("click", (e) => {
     e.preventDefault();
-    const startDateFormat = new Date(startDate.value);
-    const endDateFormat = new Date(endDate.value);
+    const startDateFormat = new Date(searchStartDate.value);
+    const endDateFormat = new Date(searchEndDate.value);
     // selectez din nou baza de date pentru ca intre timp e posibil sa fi editat un shift si sa nu fie actualizata cautarea
     const filteredShifts = shiftDb.filter((element) => {
       const dateFormat = new Date(element.dateCreatedShift);

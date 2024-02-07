@@ -209,7 +209,7 @@ header {
 }
 
 .shifts {
-    @include flexBox(1000px, min-content, column, space-between, center, 20px);
+    @include flexBox(985px, min-content, column, space-between, center, 20px);
 
     @media (max-width:1000px) {
         overflow: scroll;
@@ -217,7 +217,7 @@ header {
     }
 
     &__table {
-        width: 1000px;
+        width: 985px;
         border-style: none;
         border-collapse: collapse;
 
@@ -250,7 +250,7 @@ header {
     }
 
     &__workplace {
-        width: 182px;
+        width: 181px;
 
         @media (max-width:768px) {
             width: 170px;

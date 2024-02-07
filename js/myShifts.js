@@ -1,5 +1,13 @@
 import { getDb, getUser } from "./modules/fetch.js"; // de ce merge daca nu e importat userSpan???
-import { tbody, workplaceFilter, searchShift, startDate, endDate, searchDate, maxMonthProfit } from "./modules/tags.js";
+import {
+  tbody,
+  workplaceFilter,
+  searchShift,
+  searchStartDate,
+  searchEndDate,
+  searchDate,
+  maxMonthProfit,
+} from "./modules/tags.js";
 import { showShifts, calculateProfit, searchWorkplace } from "./modules/functions.js";
 import { showBestMonth } from "./modules/validateShift.js";
 
@@ -22,13 +30,11 @@ searchWorkplace(searchShift, userShifts);
 
 searchDate.addEventListener("click", (e) => {
   e.preventDefault();
-  const startDateFormat = new Date(startDate.value);
-  const endDateFormat = new Date(endDate.value);
-  const sss = Date(endDate.value);
-  console.log(sss, endDateFormat);
+  const startDateFormat = new Date(searchStartDate.value);
+  const endDateFormat = new Date(searchEndDate.value);
   // selectez din nou baza de date pentru ca intre timp e posibil sa fi editat un shift si sa nu fie actualizata cautarea
   const filteredShifts = userShifts.filter((element) => {
-    const dateFormat = new Date(element.dateCreatedShift);
+    const dateFormat = new Date(element.dateStartShift);
     return dateFormat.getTime() <= endDateFormat.getTime() && dateFormat.getTime() >= startDateFormat.getTime();
   });
   tbody.innerHTML = "";

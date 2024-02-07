@@ -1,4 +1,14 @@
-import { shiftBox } from "./tags.js";
+import {
+  endDate,
+  errorEndDate,
+  errorStartDate,
+  imgErrorEndDate,
+  imgErrorStartDate,
+  searchEndDate,
+  searchStartDate,
+  shiftBox,
+  startDate,
+} from "./tags.js";
 import { addRemoveClassesInvalid, addRemoveClassesValid } from "./functions.js";
 import { calculateProfit } from "./functions.js";
 // const shiftBox = document.querySelectorAll("[data-empty]");
@@ -13,11 +23,11 @@ export function validateShift(shiftChecked) {
 
 //functie din addShifts.js mutata aici din cauza erori
 function checkTime() {
-  const startDate = date.value + " " + timeStart.value;
-  const endDate = date.value + " " + timeEnd.value;
-  const startDateFormat = new Date(startDate);
-  const endDateFormat = new Date(endDate);
-  console.log(startDateFormat, endDateFormat, timeStart.value > timeEnd.value);
+  const startDateValue = startDate.value + " " + timeStart.value;
+  const endDateValue = endDate.value + " " + timeEnd.value;
+  const startDateFormat = new Date(startDateValue);
+  const endDateFormat = new Date(endDateValue);
+  //console.log(startDateFormat, endDateFormat, timeStart.value > timeEnd.value);
 
   //de ce imi afiseaza valoarea lui timeStart daca nu e importata din tags.js
   console.log(timeStart, timeStart.value);
@@ -25,12 +35,18 @@ function checkTime() {
     if (startDateFormat.getTime() > endDateFormat.getTime()) {
       addRemoveClassesInvalid(timeStart, errorTimeStart, imgErrorTimeStart, "shift__input--valid", "shift__input--error");
       addRemoveClassesInvalid(timeEnd, errorTimeEnd, imgErrorTimeEnd, "shift__input--valid", "shift__input--error");
+      addRemoveClassesInvalid(startDate, errorStartDate, imgErrorStartDate, "shift__input--valid", "shift__input--error");
+      addRemoveClassesInvalid(endDate, errorEndDate, imgErrorEndDate, "shift__input--valid", "shift__input--error");
+
       errorTimeStart.textContent = `Start time must be lower thar End time!`;
       errorTimeEnd.textContent = `End time must be higher thar Start time!`;
       isValid = false;
     } else {
       addRemoveClassesValid(timeStart, errorTimeStart, imgErrorTimeStart, "shift__input--valid", "shift__input--error");
       addRemoveClassesValid(timeEnd, errorTimeEnd, imgErrorTimeEnd, "shift__input--valid", "shift__input--error");
+      addRemoveClassesValid(startDate, errorStartDate, imgErrorStartDate, "shift__input--valid", "shift__input--error");
+      addRemoveClassesValid(endDate, errorEndDate, imgErrorEndDate, "shift__input--valid", "shift__input--error");
+
       console.log("checktime ", timeStart.value, timeEnd.value);
     }
   }
@@ -137,7 +153,7 @@ export function showBestMonth(userShifts) {
     },
   ];
   userShifts.forEach((element) => {
-    const date = new Date(element.dateCreatedShift);
+    const date = new Date(element.dateStartShift);
     months.forEach((item, index) => {
       if (index === date.getMonth()) {
         item.value += Number(calculateProfit(element));

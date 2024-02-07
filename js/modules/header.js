@@ -1,6 +1,6 @@
 import { getUser } from "./fetch.js";
 import { checkLogIn, logOut } from "./logFunction.js";
-import { hamburgerOpen, hamburgerClose, navbarLinks, navbarMobileLinks, mobileModal } from "./tags.js";
+import { hamburgerOpen, hamburgerClose, navbarMobileLinks } from "./tags.js";
 
 hamburgerOpen.addEventListener("click", () => {
   hamburgerOpen.classList.toggle("hide");

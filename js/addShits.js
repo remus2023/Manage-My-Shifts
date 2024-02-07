@@ -2,13 +2,16 @@ import { getUser, getDb } from "./modules/fetch.js";
 import {
   addShift,
   shiftBox,
-  date,
+  startDate,
+  endDate,
   timeStart,
   timeEnd,
-  imgErrorDate,
+  imgErrorStartDate,
+  imgErrorEndDate,
   imgErrorTimeStart,
   imgErrorTimeEnd,
-  errorDate,
+  errorStartDate,
+  errorEndDate,
   errorTimeStart,
   errorTimeEnd,
   hourlyWage,
@@ -32,17 +35,22 @@ addShift.addEventListener("click", function (e) {
   }
 });
 
-date.addEventListener("input", () => {
+startDate.addEventListener("input", () => {
   timeStart.disabled = false;
-  timeEnd.disabled = false;
-  if (!date.value) {
+  if (!startDate.value) {
     timeStart.disabled = true;
-    timeEnd.disabled = true;
     timeStart.value = "";
-    timeEnd.value = "";
     timeStart.classList.remove("shift__input--error");
     imgErrorTimeStart.classList.add("hide");
     errorTimeStart.classList.add("hide");
+  }
+});
+
+endDate.addEventListener("input", () => {
+  timeEnd.disabled = false;
+  if (!endDate.value) {
+    timeEnd.disabled = true;
+    timeEnd.value = "";
     timeEnd.classList.remove("shift__input--error");
     imgErrorTimeEnd.classList.add("hide");
     errorTimeEnd.classList.add("hide");
@@ -51,9 +59,10 @@ date.addEventListener("input", () => {
 
 function registerShift() {
   const newShift = {
-    dateCreatedShift: date.value,
-    startShiftTime: timeStart.value,
-    endShiftTime: timeEnd.value,
+    dateStartShift: startDate.value,
+    timeStartShift: timeStart.value,
+    dateEndShift: endDate.value,
+    timeEndShift: timeEnd.value,
     hourlyWage: hourlyWage.value,
     workplace: workplace.value,
     shift: shift.value,
@@ -63,8 +72,9 @@ function registerShift() {
   shiftDb.push(newShift);
   localStorage.setItem("shiftDb", JSON.stringify(shiftDb));
   alert("Your shift was successfully add into our database");
-  date.value = "";
+  startDate.value = "";
   timeStart.value = "";
+  endDate.value = "";
   timeEnd.value = "";
   hourlyWage.value = "";
   workplace.value = "Paint Shop";

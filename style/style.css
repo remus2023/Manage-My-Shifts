@@ -786,7 +786,7 @@ header {
 }
 
 .shifts {
-  max-width: 1000px;
+  max-width: 985px;
   width: 100%;
   height: -moz-min-content;
   height: min-content;
@@ -803,7 +803,7 @@ header {
   }
 }
 .shifts__table {
-  width: 1000px;
+  width: 985px;
   border-style: none;
   border-collapse: collapse;
 }
@@ -844,7 +844,7 @@ header {
   }
 }
 .shifts__workplace {
-  width: 182px;
+  width: 181px;
 }
 @media (max-width: 768px) {
   .shifts__workplace {
